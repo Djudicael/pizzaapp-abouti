@@ -18,7 +18,13 @@ public class StockageTableau implements Stockage {
 	}
 
 	@Override
-	public void savePizza(Pizza newPizza) {
+	public void savePizza(Pizza newPizza) throws SavePizzaException {
+		if (newPizza.getCode().length() < 3 || newPizza.getCode().length() > 3) {
+			// déclencher exception
+			SavePizzaException e = new SavePizzaException("attention vous avez rentré un code non conventionel");
+
+			throw e;
+		}
 		Pizza[] newPizzaTab = Arrays.copyOf(listePizza, listePizza.length + 1);
 		newPizza.setId(listePizza.length);
 		newPizzaTab[listePizza.length] = newPizza;

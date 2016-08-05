@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.service.SavePizzaException;
 import fr.pizzeria.service.Stockage;
 
 public class AjouterPizzaAction extends Action {
@@ -31,7 +32,15 @@ public class AjouterPizzaAction extends Action {
 		Pizza newPizza = new Pizza(0, newcode, newnom, newprix);
 
 		// sauvegrde de la pizza
-		stockage.savePizza(newPizza);
+		try {
+			stockage.savePizza(newPizza);
+		} catch (SavePizzaException e) {
+			// TODO Auto-generated catch block
+			// System.out.println("attention vous avez rentré un code de plus de
+			// 3 lettres");
+			System.out.println(e.getMessage());
+			// e.printStackTrace();
+		}
 
 		System.out.println("votre nouvelle pizza a été ajouté");
 
