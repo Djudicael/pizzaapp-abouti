@@ -1,14 +1,12 @@
 package fr.pizzeria.ihm;
 
-public  class Action {
-	
+public class Action {
+
 	private String libelle;
-	
-	
+
 	public Action(String libelle) {
 		this.libelle = libelle;
 	}
-
 
 	public Action() {
 		super();
@@ -22,8 +20,8 @@ public  class Action {
 		this.libelle = libelle;
 	}
 
-	public  void execute(){
-		
+	public void execute() {
+
 	}
 
 }

@@ -8,4 +8,8 @@ public interface Stockage {
 
 	void savePizza(Pizza newPizza);
 
+	void modifPizza(Pizza pizza);
+
+	public void suprimPizza(int id);
+
 }

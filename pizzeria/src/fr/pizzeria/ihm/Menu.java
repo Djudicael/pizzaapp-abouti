@@ -8,17 +8,20 @@ public class Menu {
 
 	private static final int CHOIX_SORTIR = 99;
 	private Action[] actions;
+	private Scanner scanner;
 
-	public Menu(Stockage stockage) {
-		actions = new Action[] { new ListerPizzaAction(stockage), new AjouterPizzaAction(),
-				new Action("Modifier une pizzas"), new Action("suprimer une pizza") };
+	public Menu(Stockage stockage, Scanner scanner) {
+		actions = new Action[] { new ListerPizzaAction(stockage), new AjouterPizzaAction(stockage, scanner),
+				new ModifierPizzaAction(stockage, scanner), new SuprimerPizzaAction(stockage, scanner) };
+		this.scanner = scanner;
+
 	}
 
-	public void start(Scanner scanner) {
+	public void start() {
 		boolean result = false;
 		do {
 			afficher();
-			result = choisir(scanner);
+			result = choisir();
 		} while (!result);
 	}
 
@@ -35,7 +38,7 @@ public class Menu {
 
 	}
 
-	private boolean choisir(Scanner scanner) {
+	private boolean choisir() {
 		System.out.println("Veuillez choisir une option");
 
 		int choix = scanner.nextInt();

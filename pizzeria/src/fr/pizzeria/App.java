@@ -13,8 +13,8 @@ public class App {
 		// Objectif 2 Récupérer la saisie
 		Scanner sc = new Scanner(System.in);
 		Stockage stockage = new StockageTableau(); // choisi le stockage tableau
-		Menu menuPrincipale = new Menu(stockage);
-		menuPrincipale.start(sc);
+		Menu menuPrincipale = new Menu(stockage, sc);
+		menuPrincipale.start();
 	}
 
 }

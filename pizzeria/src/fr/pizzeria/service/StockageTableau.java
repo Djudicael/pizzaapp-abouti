@@ -1,5 +1,7 @@
 package fr.pizzeria.service;
 
+import java.util.Arrays;
+
 import fr.pizzeria.model.Pizza;
 
 public class StockageTableau implements Stockage {
@@ -17,7 +19,38 @@ public class StockageTableau implements Stockage {
 
 	@Override
 	public void savePizza(Pizza newPizza) {
-		// TODO Auto-generated method stub
+		Pizza[] newPizzaTab = Arrays.copyOf(listePizza, listePizza.length + 1);
+		newPizza.setId(listePizza.length);
+		newPizzaTab[listePizza.length] = newPizza;
+		listePizza = newPizzaTab;
+	}
+
+	public void modifPizza(Pizza pizza) {
+		int id = pizza.getId();
+		listePizza[id] = pizza;
+	}
+
+	public void suprimPizza(int id) {
+		int newIndex;
+		// on parcourt la liste
+		Pizza listeProvisoire[] = new Pizza[listePizza.length - 1]; // tableau
+																	// provisoire
+																	// décrémenté
+																	// de 1
+
+		for (int i = 0; i < listePizza.length - 1; i++) {
+			if (i >= id) {
+				newIndex = i + 1;
+			} // on modifie l'index pour passer la pizza à modifier
+			else {
+				newIndex = i;
+			}
+			// on copie les informations de l'ancienne liste sauf la pizza
+			// supprimée
+			listeProvisoire[i] = listePizza[newIndex];
+
+		}
+		listePizza = listeProvisoire;
 
 	}
 
