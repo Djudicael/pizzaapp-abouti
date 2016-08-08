@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import fr.pizzeria.service.Stockage;
@@ -7,12 +9,15 @@ import fr.pizzeria.service.Stockage;
 public class Menu {
 
 	private static final int CHOIX_SORTIR = 99;
-	private Action[] actions;
+	private Map<Integer, Action> actions = new HashMap<>();
 	private Scanner scanner;
 
 	public Menu(Stockage stockage, Scanner scanner) {
-		actions = new Action[] { new ListerPizzaAction(stockage), new AjouterPizzaAction(stockage, scanner),
-				new ModifierPizzaAction(stockage, scanner), new SuprimerPizzaAction(stockage, scanner) };
+
+		this.actions.put(1, new ListerPizzaAction(stockage));
+		this.actions.put(2, new AjouterPizzaAction(stockage, scanner));
+		this.actions.put(3, new ModifierPizzaAction(stockage, scanner));
+		this.actions.put(4, new SuprimerPizzaAction(stockage, scanner));
 		this.scanner = scanner;
 
 	}
@@ -28,11 +33,10 @@ public class Menu {
 	public void afficher() {
 		// menu du programme
 		System.out.println("***** Pizzeria Administration *****");
-		for (int i = 0; i < actions.length; i++) {
-			Action actionEnCours = actions[i];
-			String libbelleAction = actionEnCours.getLibelle();
-			int indexMenu = i + 1;
-			System.out.println(indexMenu + ". " + libbelleAction);
+		for (Integer numero : actions.keySet()) {
+			Action actionEnCours = actions.get(numero);
+
+			System.out.println(numero + ". " + actionEnCours.getLibelle());
 		}
 		System.out.println(CHOIX_SORTIR + " . Quitter");
 
@@ -42,13 +46,13 @@ public class Menu {
 		System.out.println("Veuillez choisir une option");
 
 		int choix = scanner.nextInt();
-		if (choix <= 0 || choix > actions.length) {
+		if (!actions.containsKey(choix)) {
 			if (choix != CHOIX_SORTIR) {
 				System.out.println("veuiller nettoyer vos lunettes");
 			}
 
 		} else {
-			Action laBonneAction = actions[choix - 1];
+			Action laBonneAction = actions.get(choix);
 			laBonneAction.execute();
 		}
 

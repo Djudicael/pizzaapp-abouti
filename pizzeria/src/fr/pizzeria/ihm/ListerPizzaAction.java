@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.util.List;
+
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
@@ -17,9 +19,14 @@ public class ListerPizzaAction extends Action {
 	@Override
 	public void execute() {
 		System.out.println("**** liste pizza ****");
-		Pizza[] pizzas = this.stockage.FindAllPizzas();
-		for (int i = 0; i < pizzas.length; i++) {
-			Pizza p = pizzas[i];
+		List<Pizza> pizzas = this.stockage.FindAllPizzas();
+		/*
+		 * for (int i = 0; i < pizzas.size(); i++) { Pizza p = pizzas[i];
+		 * System.out.println(p.getCode() + " " + p.getNom() + " " +
+		 * p.getPrix()); }
+		 */
+
+		for (Pizza p : pizzas) {
 			System.out.println(p.getCode() + " " + p.getNom() + " " + p.getPrix());
 		}
 	}

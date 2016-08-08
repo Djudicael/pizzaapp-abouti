@@ -24,7 +24,7 @@ public class SuprimerPizzaAction extends Action {
 
 		System.out.println("Veuillez choisir la pizza à supprimer");
 		int id = sc.nextInt();
-		stockage.suprimPizza(id);
+		stockage.suprimPizza(id - 1);
 	}
 
 }

@@ -1,10 +1,12 @@
 package fr.pizzeria.service;
 
+import java.util.List;
+
 import fr.pizzeria.model.Pizza;
 
 public interface Stockage {
 	// contrat
-	Pizza[] FindAllPizzas();
+	List<Pizza> FindAllPizzas();
 
 	/*
 	 * void updatePizza(String codePizza, Pizza pizza) throws
@@ -13,9 +15,9 @@ public interface Stockage {
 	 * void deletePizza(String codePizza) throws DeletePizzaException;
 	 */
 
-	void savePizza(Pizza newPizza) throws SavePizzaException;
+	public void savePizza(Pizza newPizza) throws SavePizzaException;
 
-	void modifPizza(Pizza pizza);
+	public void modifPizza(Pizza pizza);
 
 	public void suprimPizza(int id);
 
