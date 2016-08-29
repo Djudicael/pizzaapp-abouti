@@ -23,7 +23,7 @@ public class ModifierPizzaAction extends Action {
 		ListerPizzaAction liste = new ListerPizzaAction(stockage);
 		liste.execute();
 		System.out.println("Veuillez choisir la pizza à modifier");
-		int id = sc.nextInt();
+		String ancienCode = sc.next();
 
 		// modification
 		System.out.println("entrez le code");
@@ -32,8 +32,8 @@ public class ModifierPizzaAction extends Action {
 		String nom3 = sc.next();
 		System.out.println("entrez le prix");
 		double prix3 = sc.nextDouble();
-		Pizza newModif = new Pizza(id - 1, code3, nom3, prix3);
-		stockage.modifPizza(newModif);
+		Pizza newModif = new Pizza(nom3, prix3);
+		stockage.modifPizza(code3 ,newModif, ancienCode);
 	}
 
 }

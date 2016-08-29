@@ -23,8 +23,8 @@ public class SuprimerPizzaAction extends Action {
 		liste.execute();
 
 		System.out.println("Veuillez choisir la pizza à supprimer");
-		int id = sc.nextInt();
-		stockage.suprimPizza(id - 1);
+		String code = sc.next();
+		stockage.suprimPizza(code);
 	}
 
 }

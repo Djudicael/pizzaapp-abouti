@@ -1,36 +1,40 @@
 package fr.pizzeria.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import fr.pizzeria.model.Pizza;
 
 public class StockageTableau implements Stockage {
 
-	public List<Pizza> listePizza = new ArrayList<>();
+	public Map< String, Pizza> listePizza = new TreeMap<>();
 
 	public StockageTableau() {
-		Pizza pepe = new Pizza(0, "PEP", "Pépéroni", 12.50);
-		listePizza.add(pepe);
-		Pizza marg = new Pizza(1, "MAR", "Margherita", 14.00);
-		listePizza.add(marg);
-		Pizza reine = new Pizza(2, "REI", "La Reine", 11.50);
-		listePizza.add(reine);
-		Pizza fromage = new Pizza(3, "FRO", "La 4 fromages", 12.00);
-		listePizza.add(fromage);
-		Pizza canni = new Pizza(4, "CAN", "La cannibale", 12.50);
-		listePizza.add(canni);
-		Pizza savo = new Pizza(5, "SAV", "La savoyarde", 13.00);
-		listePizza.add(savo);
-		Pizza orien = new Pizza(6, "ORI", "L'orientale", 13.50);
-		listePizza.add(orien);
-		Pizza indie = new Pizza(7, "IND", "L'indienne", 14.00);
-		listePizza.add(indie);
+		Pizza pepe = new Pizza( "Pépéroni", 12.50);
+		
+		listePizza.put("PEP",pepe);
+		Pizza marg = new Pizza( "Margherita", 14.00);
+		listePizza.put("MAR",marg);
+		Pizza reine = new Pizza( "La Reine", 11.50);
+		listePizza.put("REI",reine);
+		Pizza fromage = new Pizza( "La 4 fromages", 12.00);
+		listePizza.put("FRO",fromage);
+		Pizza canni = new Pizza("La cannibale", 12.50);
+		listePizza.put("CAN",canni);
+		Pizza savo = new Pizza("La savoyarde", 13.00);
+		listePizza.put("SAV",savo);
+		Pizza orien = new Pizza("L'orientale", 13.50);
+		listePizza.put("ORI",orien);
+		Pizza indie = new Pizza("L'indienne", 14.00);
+		listePizza.put("IND",indie);
 
 	}
 
 	@Override
-	public List<Pizza> FindAllPizzas() {
+	public Map< String, Pizza> FindAllPizzas() {
 
 		/*
 		 * for (Pizza p : listePizza) { System.out.println(p.getNom()); }
@@ -40,16 +44,17 @@ public class StockageTableau implements Stockage {
 	}
 
 	@Override
-	public void savePizza(Pizza newPizza) throws SavePizzaException {
+	public void savePizza( String newcode, Pizza newPizza) throws SavePizzaException {
 
-		listePizza.add(newPizza);
+		listePizza.put(newcode ,newPizza);
 	}
 
-	public void modifPizza(Pizza pizza) {
-		int id = pizza.getId();
-		Pizza pizzaAModifier = null;
-		for (Pizza pizzaEnCours : listePizza) {
-			if (pizzaEnCours.getId() == id) {
+	public void modifPizza(String newcode, Pizza pizza , String anciencode) {
+		String code = anciencode;
+		String pizzaAModifier = null ;
+		
+		for (String pizzaEnCours : listePizza.keySet()) {
+			if (pizzaEnCours == code) {
 				pizzaAModifier = pizzaEnCours;
 				// option 2
 				/*
@@ -59,12 +64,12 @@ public class StockageTableau implements Stockage {
 			}
 		}
 		// option 1
-		listePizza.remove(pizzaAModifier);
-		listePizza.add(pizza);
+		listePizza.remove(anciencode);
+		listePizza.put(newcode, pizza );
 
 	}
 
-	public void suprimPizza(int id) {
+	public void suprimPizza(String code) {
 		/*
 		 * int newIndex; // on parcourt la liste Pizza listeProvisoire[] = new
 		 * Pizza[listePizza.size() - 1]; // tableau // provisoire // décrémenté
@@ -78,15 +83,15 @@ public class StockageTableau implements Stockage {
 		 * 
 		 * } listePizza = listeProvisoire;
 		 */
-		Pizza pizzaAModifier = null;
+		/*String pizzaAModifier = null ;
 
-		for (Pizza pizzaEnCours : listePizza) {
-			if (pizzaEnCours.getId() == id) {
+		for (String pizzaEnCours : listePizza.keySet()) {
+			if (pizzaEnCours == code) {
 				pizzaAModifier = pizzaEnCours;
 
 			}
-		}
-		listePizza.remove(pizzaAModifier);
+		}*/
+		listePizza.remove(code);
 
 	}
 

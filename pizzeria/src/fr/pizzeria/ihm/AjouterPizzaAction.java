@@ -29,11 +29,11 @@ public class AjouterPizzaAction extends Action {
 		System.out.println("veuillez saisir le prix");
 		double newprix = sc.nextDouble();
 		// creation de la nouelle pizza
-		Pizza newPizza = new Pizza(0, newcode, newnom, newprix);
+		Pizza newPizza = new Pizza( newnom, newprix);
 
 		// sauvegrde de la pizza
 		try {
-			stockage.savePizza(newPizza);
+			stockage.savePizza(newcode, newPizza);
 		} catch (SavePizzaException e) {
 			// TODO Auto-generated catch block
 			// System.out.println("attention vous avez rentré un code de plus de

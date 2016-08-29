@@ -10,10 +10,9 @@ public class Pizza {
 	public static int nbPizzas;
 	
 	
-	public Pizza(int id, String code, String nom, double prix) {
+	public Pizza( String nom, double prix) {
 		super();
-		this.id = id;
-		this.code = code;
+		
 		this.nom = nom;
 		this.prix = prix;
 	}
