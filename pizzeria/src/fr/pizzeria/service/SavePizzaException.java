@@ -1,6 +1,6 @@
 package fr.pizzeria.service;
 
-public class SavePizzaException extends Exception {
+public class SavePizzaException extends PizzeriaException {
 
 	public SavePizzaException() {
 		super();

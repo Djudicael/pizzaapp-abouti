@@ -1,13 +1,10 @@
 package fr.pizzeria.service;
 
-import java.util.List;
 import java.util.Map;
 
-import fr.pizzeria.model.Pizza;
-
-public interface Stockage {
+public interface Stockage<K, V> {
 	// contrat
-	Map< String, Pizza> FindAllPizzas();
+	Map<K, V> finAll();
 
 	/*
 	 * void updatePizza(String codePizza, Pizza pizza) throws
@@ -16,10 +13,10 @@ public interface Stockage {
 	 * void deletePizza(String codePizza) throws DeletePizzaException;
 	 */
 
-	public void savePizza(String newcode ,Pizza newPizza) throws SavePizzaException;
+	public void save(K newcode, V newPizza) throws PizzeriaException;
 
-	public void modifPizza(String newcode, Pizza pizza, String anciencode);
+	public void update(K newcode, V pizza, K anciencode);
 
-	public void suprimPizza(String code);
+	public void delete(K code);
 
 }

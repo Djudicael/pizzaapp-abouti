@@ -2,13 +2,14 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
 public class SuprimerPizzaAction extends Action {
-	private Stockage stockage;
+	private Stockage<String, Pizza> stockage;
 	private Scanner sc;
 
-	public SuprimerPizzaAction(Stockage stockage, Scanner sc) {
+	public SuprimerPizzaAction(Stockage<String, Pizza> stockage, Scanner sc) {
 
 		super("Suprimer pizza");
 		this.stockage = stockage;
@@ -24,7 +25,7 @@ public class SuprimerPizzaAction extends Action {
 
 		System.out.println("Veuillez choisir la pizza à supprimer");
 		String code = sc.next();
-		stockage.suprimPizza(code);
+		stockage.delete(code);
 	}
 
 }

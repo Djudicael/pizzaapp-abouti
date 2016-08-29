@@ -6,10 +6,10 @@ import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
 public class ModifierPizzaAction extends Action {
-	private Stockage stockage;
+	private Stockage<String, Pizza> stockage;
 	private Scanner sc;
 
-	public ModifierPizzaAction(Stockage stockage, Scanner sc) {
+	public ModifierPizzaAction(Stockage<String, Pizza> stockage, Scanner sc) {
 		super("Modifier une pizza");
 		this.stockage = stockage;
 		this.sc = sc;
@@ -33,7 +33,7 @@ public class ModifierPizzaAction extends Action {
 		System.out.println("entrez le prix");
 		double prix3 = sc.nextDouble();
 		Pizza newModif = new Pizza(nom3, prix3);
-		stockage.modifPizza(code3 ,newModif, ancienCode);
+		stockage.update(code3, newModif, ancienCode);
 	}
 
 }
