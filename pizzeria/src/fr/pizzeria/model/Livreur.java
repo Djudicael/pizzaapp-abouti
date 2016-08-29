@@ -1,6 +1,6 @@
 package fr.pizzeria.model;
 
-public class Livreur extends AbstractPersonne {
+public class Livreur extends AbstractPersonne  {
 
 	private double montantDecouvertAutorise;
 
@@ -17,4 +17,11 @@ public class Livreur extends AbstractPersonne {
 		this.montantDecouvertAutorise = montantDecouvertAutorise;
 	}
 
+	@Override
+	public double getSolde() {
+		// TODO Auto-generated method stub
+		return super.getSolde();
+	}
+
+	
 }

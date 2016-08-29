@@ -1,9 +1,10 @@
 package fr.pizzeria.model;
 
+import fr.pizzeria.service.CompteStat;
 import fr.pizzeria.service.CreditException;
 import fr.pizzeria.service.DebitException;
 
-public class AbstractPersonne {
+public class AbstractPersonne implements CompteStat {
 
 	private int id;
 	private String nom;

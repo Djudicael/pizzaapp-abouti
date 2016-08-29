@@ -16,7 +16,7 @@ public class ListerPersonneAction<K, T> extends Action {
 
 	@Override
 	public void execute() {
-		System.out.println("**** liste Clients ****");
+		System.out.println("**** liste ****");
 		Map<K, T> clients = this.stockage.finAll();
 
 		for (T clientEnCours : clients.values()) {

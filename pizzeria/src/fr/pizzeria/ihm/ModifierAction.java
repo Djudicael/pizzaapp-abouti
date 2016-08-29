@@ -25,8 +25,8 @@ public abstract class ModifierAction<K, T> extends Action {
 
 	@Override
 	public void execute() {
-		System.out.println("Menu 3. Mettre à jour un client");
-		System.out.println("voici la liste de client");
+		System.out.println(" Mettre à jour");
+		System.out.println("voici la liste ");
 
 		Action liste = getListerAction(stockage);
 		liste.execute();

@@ -5,11 +5,11 @@ import java.util.TreeMap;
 
 import fr.pizzeria.model.Livreur;
 
-public class StosckageLivreurs implements Stockage<Integer, Livreur> {
+public class StockageLivreurs implements Stockage<Integer, Livreur> {
 
 	public Map<Integer, Livreur> listeLivreur = new TreeMap<>();
 
-	public StosckageLivreurs() {
+	public StockageLivreurs() {
 		super();
 		Livreur manu = new Livreur(1, "Ehmanu", "Tudecend", 1000.0);
 		listeLivreur.put(manu.getId(), manu);

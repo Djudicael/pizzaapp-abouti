@@ -22,12 +22,12 @@ public class Menu {
 		this.actions.put(2, new AjouterPizzaAction(stockage, scanner));
 		this.actions.put(3, new ModifierPizzaAction(stockage, scanner));
 		this.actions.put(4, new SuprimerPizzaAction(stockage, scanner));
-		this.actions.put(5, new ListerPersonneAction(stockagec));
-		this.actions.put(6, new AjouterClientAction(stockagec, scanner));
-		this.actions.put(7, new ModifierClientAction(stockagec, scanner));
-		this.actions.put(8, new SuprimerClientAction(stockagec, scanner));
-		this.actions.put(9, new CrediterClient(stockagec, scanner));
-		this.actions.put(10, new DebiterClient(stockagec, scanner));
+		this.actions.put(5, new ListerPersonneAction(stockageC));
+		this.actions.put(6, new AjouterClientAction(stockageC, scanner));
+		this.actions.put(7, new ModifierClientAction(stockageC, scanner));
+		this.actions.put(8, new SuprimerClientAction(stockageC, scanner));
+		this.actions.put(9, new CrediterClient(stockageC, scanner));
+		this.actions.put(10, new DebiterClient(stockageC, scanner));
 		this.actions.put(11, new ListerPersonneAction(stockageL));
 		this.scanner = scanner;
 

@@ -8,6 +8,7 @@ import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockageClient;
+import fr.pizzeria.service.StockageLivreurs;
 import fr.pizzeria.service.StockageTableau;
 
 public class App {
