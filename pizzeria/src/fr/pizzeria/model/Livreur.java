@@ -1,6 +1,11 @@
 package fr.pizzeria.model;
 
-public class Livreur extends AbstractPersonne  {
+import fr.pizzeria.service.CreditException;
+import fr.pizzeria.service.DebitException;
+
+public class Livreur extends AbstractPersonne {
+
+	private double solde;
 
 	private double montantDecouvertAutorise;
 
@@ -18,10 +23,19 @@ public class Livreur extends AbstractPersonne  {
 	}
 
 	@Override
-	public double getSolde() {
-		// TODO Auto-generated method stub
-		return super.getSolde();
+	public void crediterCompte(double montant) throws CreditException {
+		double soldeTemporaire;
+		soldeTemporaire = this.solde + montant;
+
+		this.solde = soldeTemporaire;
 	}
 
-	
+	@Override
+	public void debiterCompte(double montant) throws DebitException {
+		double soldeTemporaire;
+		soldeTemporaire = this.solde - montant;
+
+		this.solde = soldeTemporaire;
+	}
+
 }

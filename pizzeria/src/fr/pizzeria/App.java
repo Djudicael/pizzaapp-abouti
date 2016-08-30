@@ -3,6 +3,7 @@ package fr.pizzeria;
 import java.util.Scanner;
 
 import fr.pizzeria.ihm.Menu;
+import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
@@ -23,8 +24,10 @@ public class App {
 		Stockage<Integer, Livreur> stockageL = new StockageLivreurs();// choisi
 																		// le
 																		// stockage
+
+		IhmHelper ihmHelper = new IhmHelper(stockagec, sc);
 		// tableau
-		Menu menuPrincipale = new Menu(stockage, stockagec, stockageL, sc);
+		Menu menuPrincipale = new Menu(stockage, ihmHelper, stockageL);
 		menuPrincipale.start();
 	}
 

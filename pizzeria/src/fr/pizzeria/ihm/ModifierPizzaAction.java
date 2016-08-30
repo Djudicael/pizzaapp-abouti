@@ -32,7 +32,7 @@ public class ModifierPizzaAction extends Action {
 		String nom3 = sc.next();
 		System.out.println("entrez le prix");
 		double prix3 = sc.nextDouble();
-		Pizza newModif = new Pizza(nom3, prix3);
+		Pizza newModif = new Pizza(code3, nom3, prix3);
 		stockage.update(code3, newModif, ancienCode);
 	}
 

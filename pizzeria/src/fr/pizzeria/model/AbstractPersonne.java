@@ -44,7 +44,7 @@ public class AbstractPersonne implements CompteStat {
 		this.prenom = prenom;
 	}
 
-	public double getSolde() {
+	public Double getSolde() {
 		return solde;
 	}
 

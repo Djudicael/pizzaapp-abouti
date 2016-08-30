@@ -10,23 +10,23 @@ public class StockageTableau implements Stockage<String, Pizza> {
 	public Map<String, Pizza> listePizza = new TreeMap<>();
 
 	public StockageTableau() {
-		Pizza pepe = new Pizza("Pépéroni", 12.50);
+		Pizza pepe = new Pizza("PEP", "Pépéroni", 12.50);
 
-		listePizza.put("PEP", pepe);
-		Pizza marg = new Pizza("Margherita", 14.00);
-		listePizza.put("MAR", marg);
-		Pizza reine = new Pizza("La Reine", 11.50);
-		listePizza.put("REI", reine);
-		Pizza fromage = new Pizza("La 4 fromages", 12.00);
-		listePizza.put("FRO", fromage);
-		Pizza canni = new Pizza("La cannibale", 12.50);
-		listePizza.put("CAN", canni);
-		Pizza savo = new Pizza("La savoyarde", 13.00);
-		listePizza.put("SAV", savo);
-		Pizza orien = new Pizza("L'orientale", 13.50);
-		listePizza.put("ORI", orien);
-		Pizza indie = new Pizza("L'indienne", 14.00);
-		listePizza.put("IND", indie);
+		listePizza.put(pepe.getCode(), pepe);
+		Pizza marg = new Pizza("MAR", "Margherita", 14.00);
+		listePizza.put(marg.getCode(), marg);
+		Pizza reine = new Pizza("REI", "La Reine", 11.50);
+		listePizza.put(reine.getCode(), reine);
+		Pizza fromage = new Pizza("FRO", "La 4 fromages", 12.00);
+		listePizza.put(fromage.getCode(), fromage);
+		Pizza canni = new Pizza("CAN", "La cannibale", 12.50);
+		listePizza.put(canni.getCode(), canni);
+		Pizza savo = new Pizza("SAV", "La savoyarde", 13.00);
+		listePizza.put(savo.getCode(), savo);
+		Pizza orien = new Pizza("ORI", "L'orientale", 13.50);
+		listePizza.put(orien.getCode(), orien);
+		Pizza indie = new Pizza("IND", "L'indienne", 14.00);
+		listePizza.put(indie.getCode(), indie);
 
 	}
 

@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Map;
 import java.util.Scanner;
 
+import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.service.PizzeriaException;
 import fr.pizzeria.service.Stockage;
@@ -10,6 +11,7 @@ import fr.pizzeria.service.Stockage;
 public class AjouterClientAction extends Action {
 	private Stockage<Integer, Client> stockage;
 	private Scanner sc;
+	private IhmHelper helper;
 
 	public AjouterClientAction(Stockage<Integer, Client> stockagec, Scanner scanner) {
 		super("Ajouter client");
@@ -20,11 +22,14 @@ public class AjouterClientAction extends Action {
 	@Override
 	public void execute() {
 		Map<Integer, Client> clients = this.stockage.finAll();
+
+		Client newModif = helper.buildClientBySaisie();
+
 		System.out.println("Menu 6. Ajouter nouveau client");
 		System.out.println("veuiller saisir l'id");
 		int newId = sc.nextInt();
 
-		if (clients.containsKey(newId)) {
+		if (clients.containsKey(newModif.getId())) {
 
 			System.out.println("Un client possède deja cet Id");
 

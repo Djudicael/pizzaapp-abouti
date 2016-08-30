@@ -29,7 +29,7 @@ public class AjouterPizzaAction extends Action {
 		System.out.println("veuillez saisir le prix");
 		double newprix = sc.nextDouble();
 		// creation de la nouelle pizza
-		Pizza newPizza = new Pizza(newnom, newprix);
+		Pizza newPizza = new Pizza(newcode, newnom, newprix);
 
 		// sauvegrde de la pizza
 		try {
