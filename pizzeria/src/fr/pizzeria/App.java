@@ -10,7 +10,7 @@ import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockageClient;
 import fr.pizzeria.service.StockageLivreurs;
-import fr.pizzeria.service.StockageTableau;
+import fr.pizzeria.service.StockagePizzaFichier;
 
 public class App {
 
@@ -19,16 +19,18 @@ public class App {
 		// Objectif 2 Récupérer la saisie
 
 		Scanner sc = new Scanner(System.in);
-		Stockage<String, Pizza> stockage = new StockageTableau();
+		// Stockage<String, Pizza> stockageP = new StockageTableau();
+		Stockage<String, Pizza> stockageF = new StockagePizzaFichier();
 		Stockage<Integer, Client> stockagec = new StockageClient();
 		Stockage<Integer, Livreur> stockageL = new StockageLivreurs();// choisi
 																		// le
 																		// stockage
 
-		IhmHelper ihmHelper = new IhmHelper(stockagec, sc);
+		IhmHelper ihmHelper = new IhmHelper(stockagec, stockageF, stockageL, sc);
 		// tableau
-		Menu menuPrincipale = new Menu(stockage, ihmHelper, stockageL);
+		Menu menuPrincipale = new Menu(ihmHelper);
 		menuPrincipale.start();
+
 	}
 
 }

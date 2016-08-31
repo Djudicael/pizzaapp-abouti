@@ -1,32 +1,30 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import fr.pizzeria.model.Client;
-import fr.pizzeria.model.Livreur;
+import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.service.CompteStat;
-import fr.pizzeria.service.Stockage;
 
 public class AfficherStatCompte extends Action {
-	private Stockage<Integer, Client> stockageC;
-	private Stockage<Integer, Livreur> stockageL;
+	private IhmHelper helper;
 
-	public AfficherStatCompte(Stockage<Integer, Client> stockageC, Stockage<Integer, Livreur> stockageL) {
-		super("Afficher statistique compte");
-		this.stockageC = stockageC;
-		this.stockageL = stockageL;
+	public AfficherStatCompte(IhmHelper helper, String libelle) {
+		super(libelle);
+		this.helper = helper;
+
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 
 		List<CompteStat> stat = new ArrayList<>();
-		stat.addAll(stockageC.finAll().values());
-		stat.addAll(stockageL.finAll().values());
+		stat.addAll(helper.getStockageClient().finAll().values());
+		stat.addAll(helper.getStockageLivreur().finAll().values());
 
 		System.out.println("le nombre de compte est de " + stat.size());
 		// total somme

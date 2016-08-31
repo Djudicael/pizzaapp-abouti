@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+
 public class Action {
 
 	private String libelle;
@@ -20,7 +22,7 @@ public class Action {
 		this.libelle = libelle;
 	}
 
-	public void execute() {
+	public void execute() throws IOException {
 
 	}
 

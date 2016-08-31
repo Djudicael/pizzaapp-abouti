@@ -5,19 +5,33 @@ public class Pizza {
 	private int id;
 	private String code;
 	private String nom;
-	private double prix;
+	private Double prix;
+	private CategoriePizza categorie;
 	public static int nbPizzas;
 
-	public Pizza(String code, String nom, double prix) {
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
 		super();
 		id = idPiz + 1;
+		this.categorie = categorie;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 	}
 
+	public Pizza() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static int getIdPiz() {
 		return idPiz;
+	}
+
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
 	}
 
 	public static void setIdPiz(int idPiz) {
@@ -48,7 +62,7 @@ public class Pizza {
 		this.nom = nom;
 	}
 
-	public double getPrix() {
+	public Double getPrix() {
 		return prix;
 	}
 
@@ -59,6 +73,6 @@ public class Pizza {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return code + " " + nom + " " + prix;
+		return code + " " + nom + " " + prix + "  " + categorie;
 	}
 }

@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
+
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 
@@ -13,7 +15,7 @@ public class ModifierClientAction extends Action {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws IOException {
 		System.out.println("Menu 3. Mettre à jour un client");
 		System.out.println("voici la liste de client");
 		ListerAction<Integer, Client> liste = new ListerAction<>(ihmHelper.getStockageClient(), "");

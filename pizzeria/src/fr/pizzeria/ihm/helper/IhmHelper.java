@@ -3,19 +3,23 @@ package fr.pizzeria.ihm.helper;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
 public class IhmHelper {
 
 	private Stockage<Integer, Client> stockageClient;
+	private Stockage<Integer, Livreur> stockageLivreur;
 	private Stockage<String, Pizza> stockagePizza;
 	private Scanner sc;
 
-	public IhmHelper(Stockage<Integer, Client> stockage, Stockage<String, Pizza> stockageP, Scanner sc) {
+	public IhmHelper(Stockage<Integer, Client> stockage, Stockage<String, Pizza> stockageP,
+			Stockage<Integer, Livreur> stockageL, Scanner sc) {
 		super();
 		this.stockageClient = stockage;
 		this.stockagePizza = stockageP;
+		this.setStockageLivreur(stockageL);
 		this.sc = sc;
 	}
 
@@ -50,6 +54,14 @@ public class IhmHelper {
 
 	public Scanner getSc() {
 		return sc;
+	}
+
+	public Stockage<Integer, Livreur> getStockageLivreur() {
+		return stockageLivreur;
+	}
+
+	public void setStockageLivreur(Stockage<Integer, Livreur> stockageLivreur) {
+		this.stockageLivreur = stockageLivreur;
 	}
 
 }

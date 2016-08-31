@@ -1,20 +1,19 @@
 package fr.pizzeria.ihm;
 
-import java.util.Scanner;
-
+import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
 
 public class SuprimerPizzaAction extends SuprimerAction<String, Pizza> {
 
-	public SuprimerPizzaAction(Stockage<String, Pizza> stockage, Scanner sc, String libelle) {
+	public SuprimerPizzaAction(Stockage<String, Pizza> stockage, String libelle, IhmHelper helper) {
 
-		super(stockage, sc, libelle);
+		super(stockage, libelle, helper);
 	}
 
 	@Override
 	String getSaisieCle() {
-		String code = sc.next();
+		String code = helper.getSc().next();
 		return code;
 	}
 

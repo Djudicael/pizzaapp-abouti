@@ -1,32 +1,31 @@
 package fr.pizzeria.ihm;
 
+import java.io.IOException;
 import java.util.Map;
-import java.util.Scanner;
 
+import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.service.CreditException;
 import fr.pizzeria.service.DebitException;
-import fr.pizzeria.service.Stockage;
 
 public class EffectuerVirement extends Action {
-	private Stockage<Integer, Client> stockage;
-	private Scanner sc;
+	private IhmHelper helper;
 
-	public EffectuerVirement(Stockage<Integer, Client> stockageC, Scanner sc) {
-		super("virement enrte client");
-		this.stockage = stockageC;
-		this.sc = sc;
+	public EffectuerVirement(IhmHelper helper, String libelle) {
+		super(libelle);
+		this.helper = helper;
+
 	}
 
 	@Override
-	public void execute() {
-		Map<Integer, Client> clients = this.stockage.finAll();
+	public void execute() throws IOException {
+		Map<Integer, Client> clients = this.helper.getStockageClient().finAll();
 		System.out.println("selectionne le client qui doit effectuer le virement");
-		int idClientDebiter = sc.nextInt();
+		int idClientDebiter = helper.getSc().nextInt();
 		System.out.println("slectionner le client qui doit recevoir le virement");
-		int idClientCrediter = sc.nextInt();
+		int idClientCrediter = helper.getSc().nextInt();
 		System.out.println("Veuillez rentrer le montant a debiter du client:");
-		double montant = sc.nextDouble();
+		double montant = helper.getSc().nextDouble();
 		Client clientTrouveDebiteur = clients.get(idClientDebiter);
 
 		try {
