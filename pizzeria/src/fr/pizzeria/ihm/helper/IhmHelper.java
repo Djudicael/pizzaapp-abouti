@@ -9,13 +9,22 @@ import fr.pizzeria.service.Stockage;
 public class IhmHelper {
 
 	private Stockage<Integer, Client> stockageClient;
-	private Stockage<String, Pizza> stockage;
+	private Stockage<String, Pizza> stockagePizza;
 	private Scanner sc;
 
-	public IhmHelper(Stockage<Integer, Client> stockage, Scanner sc) {
+	public IhmHelper(Stockage<Integer, Client> stockage, Stockage<String, Pizza> stockageP, Scanner sc) {
 		super();
 		this.stockageClient = stockage;
+		this.stockagePizza = stockageP;
 		this.sc = sc;
+	}
+
+	public Stockage<String, Pizza> getStockagePizza() {
+		return stockagePizza;
+	}
+
+	public void setStockagePizza(Stockage<String, Pizza> stockagePizza) {
+		this.stockagePizza = stockagePizza;
 	}
 
 	public Client buildClientBySaisie() {
