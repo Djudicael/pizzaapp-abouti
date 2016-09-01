@@ -8,14 +8,16 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.service.PizzeriaException;
 import fr.pizzeria.service.Stockage;
 
+@Annotationaction
 public class AjouterClientAction extends Action {
 	private Stockage<Integer, Client> stockage;
 
 	private IhmHelper helper;
 
-	public AjouterClientAction(Stockage<Integer, Client> stockagec, String libelle) {
+	public AjouterClientAction(Stockage<Integer, Client> stockagec, String libelle, IhmHelper helper) {
 		super(libelle);
 		this.stockage = stockagec;
+		this.helper = helper;
 
 	}
 

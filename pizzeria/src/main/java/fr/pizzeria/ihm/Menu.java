@@ -16,12 +16,14 @@ public class Menu {
 
 	public Menu(IhmHelper helper) {
 
+		// Reflections reflections = new Reflections();
+
 		this.actions.put(1, new ListerAction<String, Pizza>(helper.getStockagePizza(), "Lister pizzas"));
 		this.actions.put(2, new AjouterPizzaAction(helper, "Ajouter une pizza"));
 		this.actions.put(3, new ModifierPizzaAction(helper, "Modifier une pizza"));
 		this.actions.put(4, new SuprimerPizzaAction(helper.getStockagePizza(), " suprimer pizza", helper));
 		this.actions.put(5, new ListerAction<>(helper.getStockageClient(), "liste des client"));
-		this.actions.put(6, new AjouterClientAction(helper.getStockageClient(), "Ajouter client"));
+		this.actions.put(6, new AjouterClientAction(helper.getStockageClient(), "Ajouter client", helper));
 		this.actions.put(7, new ModifierClientAction(helper));
 		this.actions.put(8, new SuprimerClientAction(helper.getStockageClient(), " suprimer client", helper));
 		this.actions.put(9, new CrediterClient(helper.getStockageClient(), "crediter client"));
@@ -31,6 +33,18 @@ public class Menu {
 		this.actions.put(13, new EffectuerVirement(helper, "virement enrte client"));
 		this.actions.put(14, new GrouperPizzaCategorie(helper, "Lister les pizzas groupées par catégorie"));
 		this.actions.put(15, new AfficherPizzaTarifEleve(helper, "Afficher la pizza au tarif le plus élevé"));
+
+		/*
+		 * Set<Class<?>> annotated =
+		 * reflections.getTypesAnnotatedWith(Annotationaction.class);
+		 * AtomicInteger index = new AtomicInteger(0); annotated.forEach(l -> {
+		 * try { this.actions.put(index.incrementAndGet(), (Action)
+		 * l.getConstructor(IhmHelper.class).newInstance(helper)); } catch
+		 * (InstantiationException | IllegalAccessException |
+		 * IllegalArgumentException | InvocationTargetException |
+		 * NoSuchMethodException | SecurityException e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); } });
+		 */
 		this.helper = helper;
 
 	}
@@ -50,7 +64,7 @@ public class Menu {
 
 	public void afficher() {
 		// menu du programme
-		System.out.println("***** Pizzeria Administration *****");
+		System.out.println("****Pizzeria Administration *****");
 		actions.forEach((numero, valeur) -> {
 			Action actionEnCours = valeur;
 			String libellAction = actionEnCours.getLibelle();
