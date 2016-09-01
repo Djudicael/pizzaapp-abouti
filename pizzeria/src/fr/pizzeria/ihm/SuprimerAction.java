@@ -22,10 +22,10 @@ public abstract class SuprimerAction<K, T> extends Action {
 	public void execute() throws IOException {
 		// TODO Auto-generated method stub
 
-		/*
-		 * ListerAction<K, T> liste = new ListerAction<K, T>(stockage, "");
-		 * liste.execute();
-		 */
+		
+		 ListerAction<K, T> liste = new ListerAction<K, T>(stockage, "");
+		 liste.execute();
+		 
 
 		System.out.println("Veuillez choisir l'élément à supprimer");
 		K code = getSaisieCle();

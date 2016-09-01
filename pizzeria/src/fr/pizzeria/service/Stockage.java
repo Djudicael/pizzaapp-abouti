@@ -18,6 +18,6 @@ public interface Stockage<K, V> {
 
 	public void update(K newcode, V pizza, K anciencode) throws IOException;
 
-	public void delete(K code);
+	public void delete(K code) throws IOException;
 
 }
