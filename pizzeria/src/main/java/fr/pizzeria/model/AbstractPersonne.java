@@ -19,6 +19,10 @@ public class AbstractPersonne implements CompteStat {
 		this.prenom = prenom;
 		this.solde = solde;
 	}
+	public AbstractPersonne() {
+
+		
+	}
 
 	public int getId() {
 		return id;
@@ -48,7 +52,7 @@ public class AbstractPersonne implements CompteStat {
 		return solde;
 	}
 
-	public void setSolde(int solde) {
+	public void setSolde(double solde) {
 		this.solde = solde;
 	}
 

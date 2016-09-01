@@ -6,10 +6,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
 import fr.pizzeria.service.Stockage;
 
@@ -17,8 +21,35 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 
 	@Override
 	public Map<Integer, Client> finAll() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		Map<Integer, Client> struct = new HashMap<>();
+
+		Files.list(Paths.get("data", "pizza")).map(chemin -> {
+
+			Client client = new Client();
+			client.setId(Integer.valueOf(chemin.getFileName().toString()));
+
+			try (Stream<String> lines = Files.lines(chemin)) {
+				;
+				String firstLine = lines.findFirst().get();
+
+				String[] tab = firstLine.split(" ");
+
+				client.setId(Integer.valueOf(tab[0]));
+				client.setNom(tab[1]);
+				client.setPrenom(tab[2]);
+				client.setSolde(Double.valueOf(tab[3]));
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return client;
+		}).collect(Collectors.groupingBy(Client::getId)).forEach((cle, valeur) -> {
+			struct.put(cle, valeur.get(0));
+		});
+
+		return struct;
 	}
 
 	@Override

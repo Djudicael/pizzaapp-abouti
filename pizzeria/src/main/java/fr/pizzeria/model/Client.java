@@ -7,4 +7,8 @@ public class Client extends AbstractPersonne {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Client() {
+		
+	}
+
 }
