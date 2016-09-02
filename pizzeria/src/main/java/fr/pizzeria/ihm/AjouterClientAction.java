@@ -8,7 +8,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.service.PizzeriaException;
 import fr.pizzeria.service.Stockage;
 
-@Annotationaction
+@Annotationaction(cons = " tet")
 public class AjouterClientAction extends Action {
 	private Stockage<Integer, Client> stockage;
 

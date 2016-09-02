@@ -5,6 +5,7 @@ import java.util.Map;
 
 import fr.pizzeria.service.Stockage;
 
+@Annotationaction(cons = " tet")
 public class ListerAction<K, T> extends Action {
 
 	private Stockage<K, T> stockage;

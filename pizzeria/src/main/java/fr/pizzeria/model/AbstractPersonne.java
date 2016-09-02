@@ -24,6 +24,10 @@ public class AbstractPersonne implements CompteStat {
 		
 	}
 
+	public AbstractPersonne() {
+
+	}
+
 	public int getId() {
 		return id;
 	}

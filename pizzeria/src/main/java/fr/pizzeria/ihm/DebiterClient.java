@@ -8,7 +8,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.service.DebitException;
 import fr.pizzeria.service.Stockage;
 
-@Annotationaction
+@Annotationaction(cons = " tet")
 public class DebiterClient extends Action {
 
 	private Stockage<Integer, Client> stockage;

@@ -1,8 +1,13 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.reflections.Reflections;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Pizza;
@@ -16,7 +21,7 @@ public class Menu {
 
 	public Menu(IhmHelper helper) {
 
-		// Reflections reflections = new Reflections();
+		Reflections reflections = new Reflections();
 
 		this.actions.put(1, new ListerAction<String, Pizza>(helper.getStockagePizza(), "Lister pizzas"));
 		this.actions.put(2, new AjouterPizzaAction(helper, "Ajouter une pizza"));
@@ -34,17 +39,26 @@ public class Menu {
 		this.actions.put(14, new GrouperPizzaCategorie(helper, "Lister les pizzas groupées par catégorie"));
 		this.actions.put(15, new AfficherPizzaTarifEleve(helper, "Afficher la pizza au tarif le plus élevé"));
 
-		/*
-		 * Set<Class<?>> annotated =
-		 * reflections.getTypesAnnotatedWith(Annotationaction.class);
-		 * AtomicInteger index = new AtomicInteger(0); annotated.forEach(l -> {
-		 * try { this.actions.put(index.incrementAndGet(), (Action)
-		 * l.getConstructor(IhmHelper.class).newInstance(helper)); } catch
-		 * (InstantiationException | IllegalAccessException |
-		 * IllegalArgumentException | InvocationTargetException |
-		 * NoSuchMethodException | SecurityException e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); } });
-		 */
+		Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(Annotationaction.class);
+		AtomicInteger youWillTry = new AtomicInteger(0);
+
+		annotated.forEach(uneClasse -> {
+			try {
+				// Constructor<?> constructor =
+				// uneClasse.getConstructor(parameterTypes);
+				// Constructor<?> constructor = uneClasse.;
+				Constructor<?>[] constructor = uneClasse.getConstructors();
+				System.out.println("voici les constructeurs: " + constructor);
+				// Constructor<?> constructor =
+				// uneClasse.getConstructor(IhmHelper.class);
+				// Object action = constructor.newInstance(helper);
+				// this.actions.put(youWillTry.incrementAndGet(), (Action)
+				// action);
+			} catch (Exception e) {
+
+			}
+		});
+
 		this.helper = helper;
 
 	}
