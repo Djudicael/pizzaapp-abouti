@@ -11,14 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
-<<<<<<< 93e8606cca76b76c6d0764810702a1550b16fd36
-import fr.pizzeria.model.Pizza;
-import fr.pizzeria.service.PizzeriaException;
-import fr.pizzeria.service.Stockage;
-=======
->>>>>>> version annote etc
 
 public class StockageClientFichier implements Stockage<Integer, Client> {
 
@@ -26,17 +19,10 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 	public Map<Integer, Client> finAll() throws IOException {
 		Map<Integer, Client> struct = new HashMap<>();
 
-<<<<<<< 93e8606cca76b76c6d0764810702a1550b16fd36
-		Files.list(Paths.get("data", "pizza")).map(chemin -> {
-
-			Client client = new Client();
-			client.setId(Integer.valueOf(chemin.getFileName().toString()));
-=======
 		Files.list(Paths.get("data", "client")).map(chemin -> {
 
 			Client client = new Client();
 			// client.setId(Integer.valueOf(chemin.getFileName()));
->>>>>>> version annote etc
 
 			try (Stream<String> lines = Files.lines(chemin)) {
 				;
@@ -48,11 +34,7 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 				client.setNom(tab[1]);
 				client.setPrenom(tab[2]);
 				client.setSolde(Double.valueOf(tab[3]));
-<<<<<<< 93e8606cca76b76c6d0764810702a1550b16fd36
-				
-=======
 
->>>>>>> version annote etc
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

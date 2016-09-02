@@ -19,10 +19,6 @@ public class AbstractPersonne implements CompteStat {
 		this.prenom = prenom;
 		this.solde = solde;
 	}
-	public AbstractPersonne() {
-
-		
-	}
 
 	public AbstractPersonne() {
 
