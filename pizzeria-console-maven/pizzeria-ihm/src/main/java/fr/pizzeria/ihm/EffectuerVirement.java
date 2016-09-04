@@ -7,7 +7,7 @@ import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.CreditException;
 import fr.pizzeria.model.DebitException;
-
+@Annotationaction(constructAction="simple")
 public class EffectuerVirement extends Action {
 	private IhmHelper helper;
 

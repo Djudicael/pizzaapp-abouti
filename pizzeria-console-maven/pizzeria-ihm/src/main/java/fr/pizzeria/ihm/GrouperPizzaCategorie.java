@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Pizza;
-
+@Annotationaction(constructAction="simple")
 public class GrouperPizzaCategorie extends Action {
 
 	private IhmHelper helper;

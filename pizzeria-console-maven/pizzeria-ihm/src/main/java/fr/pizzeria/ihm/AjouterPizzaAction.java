@@ -8,7 +8,7 @@ import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
-
+@Annotationaction(constructAction="simple")
 public class AjouterPizzaAction extends Action {
 
 	private IhmHelper helper;

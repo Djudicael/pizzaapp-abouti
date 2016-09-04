@@ -7,7 +7,7 @@ import java.util.Optional;
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-
+@Annotationaction(constructAction="simple")
 public class ModifierPizzaAction extends Action {
 	private IhmHelper helper;
 

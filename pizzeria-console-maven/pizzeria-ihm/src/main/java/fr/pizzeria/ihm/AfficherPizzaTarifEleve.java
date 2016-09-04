@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Pizza;
 
-@Annotationaction(cons = " tet")
+@Annotationaction(constructAction="simple")
 public class AfficherPizzaTarifEleve extends Action {
 	private IhmHelper helper;
 

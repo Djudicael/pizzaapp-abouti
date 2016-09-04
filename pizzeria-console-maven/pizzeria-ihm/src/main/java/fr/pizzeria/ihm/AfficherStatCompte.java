@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CompteStat;
-
+@Annotationaction(constructAction="simple")
 public class AfficherStatCompte extends Action {
 	private IhmHelper helper;
 
