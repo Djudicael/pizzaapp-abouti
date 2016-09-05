@@ -9,6 +9,15 @@
   <groupId>dta</groupId>
   <artifactId>pizzeria-model</artifactId>
   <version>1.0</version>
+ <dependencies>
+ <dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    
+		</dependency>
+ 
+ </dependencies>
+  		
   
 
 </project>
