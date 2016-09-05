@@ -42,7 +42,7 @@ public class App {
 
 		System.out.println(DateFormatUtils.format(date, "dd/MM - HH:MM"));
 
-		IhmHelper ihmHelper = new IhmHelper(stockagec, stockageProperties, stockageL, sc);
+		IhmHelper ihmHelper = new IhmHelper(stockageC, stockageProperties, stockageL, sc);
 		// tableau
 		Menu menuPrincipale = new Menu(ihmHelper);
 		menuPrincipale.start();
