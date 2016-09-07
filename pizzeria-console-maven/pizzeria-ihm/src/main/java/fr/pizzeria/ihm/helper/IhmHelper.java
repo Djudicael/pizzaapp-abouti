@@ -1,10 +1,12 @@
 package fr.pizzeria.ihm.helper;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.service.Importation;
 import fr.pizzeria.service.Stockage;
 
 public class IhmHelper {
@@ -12,15 +14,27 @@ public class IhmHelper {
 	private Stockage<Integer, Client> stockageClient;
 	private Stockage<Integer, Livreur> stockageLivreur;
 	private Stockage<String, Pizza> stockagePizza;
+	private Importation stockagePizDaa;
 	private Scanner sc;
 
 	public IhmHelper(Stockage<Integer, Client> stockage, Stockage<String, Pizza> stockageP,
-			Stockage<Integer, Livreur> stockageL, Scanner sc) {
+			Stockage<Integer, Livreur> stockageL, Scanner sc, Importation stockagePizDaa) throws SQLException {
+
 		super();
+		this.stockagePizDaa = stockagePizDaa;
 		this.stockageClient = stockage;
 		this.stockagePizza = stockageP;
 		this.setStockageLivreur(stockageL);
+
 		this.sc = sc;
+	}
+
+	public Importation getStockagePizDaa() {
+		return stockagePizDaa;
+	}
+
+	public void setStockagePizDaa(Importation stockagePizDaa) {
+		this.stockagePizDaa = stockagePizDaa;
 	}
 
 	public Stockage<String, Pizza> getStockagePizza() {

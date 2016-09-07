@@ -1,13 +1,15 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.CreditException;
 import fr.pizzeria.model.DebitException;
-@Annotationaction(constructAction="simple")
+
+@Annotationaction(constructAction = "simple")
 public class EffectuerVirement extends Action {
 	private IhmHelper helper;
 
@@ -18,7 +20,7 @@ public class EffectuerVirement extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.helper.getStockageClient().finAll();
 		System.out.println("selectionne le client qui doit effectuer le virement");
 		int idClientDebiter = helper.getSc().nextInt();

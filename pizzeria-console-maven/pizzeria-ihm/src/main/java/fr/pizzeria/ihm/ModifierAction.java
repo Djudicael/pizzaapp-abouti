@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import fr.pizzeria.service.Stockage;
@@ -25,7 +26,7 @@ public abstract class ModifierAction<K, T> extends Action {
 	abstract T getSaisieNouvelEntite();
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		System.out.println(" Mettre à jour");
 		System.out.println("voici la liste ");
 

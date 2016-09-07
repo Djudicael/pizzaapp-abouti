@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
@@ -8,7 +9,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.service.PizzeriaException;
 import fr.pizzeria.service.Stockage;
 
-@Annotationaction(constructAction="client")
+@Annotationaction(constructAction = "client")
 public class AjouterClientAction extends Action {
 	private Stockage<Integer, Client> stockage;
 
@@ -22,7 +23,7 @@ public class AjouterClientAction extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.stockage.finAll();
 
 		Client newModif = helper.buildClientBySaisie();

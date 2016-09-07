@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -8,7 +9,8 @@ import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
-@Annotationaction(constructAction="simple")
+
+@Annotationaction(constructAction = "simple")
 public class AjouterPizzaAction extends Action {
 
 	private IhmHelper helper;
@@ -20,7 +22,7 @@ public class AjouterPizzaAction extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		System.out.println("Menu 2. Ajouter une nouvelle pizza");
 		System.out.println("veuiller saisir le code");
 		String newcode = helper.getSc().next();

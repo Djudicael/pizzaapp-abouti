@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.stream.Collectors;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CompteStat;
-@Annotationaction(constructAction="simple")
+
+@Annotationaction(constructAction = "simple")
 public class AfficherStatCompte extends Action {
 	private IhmHelper helper;
 
@@ -20,7 +22,7 @@ public class AfficherStatCompte extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 
 		List<CompteStat> stat = new ArrayList<>();
 		stat.addAll(helper.getStockageClient().finAll().values());

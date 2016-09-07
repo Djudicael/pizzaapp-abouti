@@ -1,13 +1,15 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-@Annotationaction(constructAction="simple")
+
+@Annotationaction(constructAction = "simple")
 public class ModifierPizzaAction extends Action {
 	private IhmHelper helper;
 
@@ -19,7 +21,7 @@ public class ModifierPizzaAction extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		System.out.println("Menu 3. Mettre à jour une pizza");
 		System.out.println("voici la liste de pizza");
 		ListerAction<String, Pizza> liste = new ListerAction<>(helper.getStockagePizza(), "");

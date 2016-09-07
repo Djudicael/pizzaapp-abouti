@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
 import fr.pizzeria.service.Stockage;
@@ -19,13 +20,11 @@ public abstract class SuprimerAction<K, T> extends Action {
 	abstract K getSaisieCle();
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		// TODO Auto-generated method stub
 
-		
-		 ListerAction<K, T> liste = new ListerAction<K, T>(stockage, "");
-		 liste.execute();
-		 
+		ListerAction<K, T> liste = new ListerAction<K, T>(stockage, "");
+		liste.execute();
 
 		System.out.println("Veuillez choisir l'élément à supprimer");
 		K code = getSaisieCle();

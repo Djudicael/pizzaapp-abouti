@@ -73,6 +73,7 @@ public class Pizza {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return code + " " + nom + " " + prix + "  " + categorie;
+		return code + " " + nom + " " + prix + " " + categorie;
+		// return code + " " + nom + " " + prix;
 	}
 }

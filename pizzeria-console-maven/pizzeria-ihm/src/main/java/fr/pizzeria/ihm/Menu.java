@@ -2,6 +2,7 @@ package fr.pizzeria.ihm;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -38,6 +39,7 @@ public class Menu {
 		this.actions.put(13, new EffectuerVirement(helper, "virement enrte client"));
 		this.actions.put(14, new GrouperPizzaCategorie(helper, "Lister les pizzas groupées par catégorie"));
 		this.actions.put(15, new AfficherPizzaTarifEleve(helper, "Afficher la pizza au tarif le plus élevé"));
+		this.actions.put(15, new ImporterDonnee(helper, "(Base de données) Importer les donnees"));
 
 		Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(Annotationaction.class);
 		AtomicInteger youWillTry = new AtomicInteger(0);
@@ -54,9 +56,7 @@ public class Menu {
 				// Object action = constructor.newInstance(helper);
 				// this.actions.put(youWillTry.incrementAndGet(), (Action)
 				// action);
-				
-				
-				
+
 			} catch (Exception e) {
 
 			}
@@ -71,7 +71,7 @@ public class Menu {
 	 * ModifierClientAction(ihmHelper)); }
 	 */
 
-	public void start() {
+	public void start() throws SQLException {
 		boolean result = false;
 		do {
 			afficher();
@@ -99,7 +99,7 @@ public class Menu {
 
 	}
 
-	private boolean choisir() {
+	private boolean choisir() throws SQLException {
 		System.out.println("Veuillez choisir une option");
 
 		int choix = helper.getSc().nextInt();

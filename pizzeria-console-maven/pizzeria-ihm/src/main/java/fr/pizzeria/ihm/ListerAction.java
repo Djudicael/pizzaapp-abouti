@@ -1,10 +1,10 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import fr.pizzeria.service.Stockage;
-
 
 public class ListerAction<K, T> extends Action {
 
@@ -17,7 +17,7 @@ public class ListerAction<K, T> extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		System.out.println("**** liste ****");
 		Map<K, T> clients = this.stockage.finAll();
 		clients.values().forEach(System.out::println);

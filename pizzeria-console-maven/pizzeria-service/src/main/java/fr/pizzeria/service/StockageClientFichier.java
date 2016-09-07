@@ -55,8 +55,8 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 		// Création d'un nouveau fichier
 		Files.createFile(cheminFichier);
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
-		Files.write(cheminFichier,
-				Arrays.asList(newPizza.getId() + " " + newPizza.getNom() + " " + newPizza.getSolde()));
+		Files.write(cheminFichier, Arrays.asList(
+				newPizza.getId() + " " + newPizza.getNom() + " " + newPizza.getPrenom() + " " + newPizza.getSolde()));
 		// Parcourir les lignes d'un fichier
 		try (Stream<String> lines = Files.lines(cheminFichier)) {
 			lines.forEach(System.out::println);

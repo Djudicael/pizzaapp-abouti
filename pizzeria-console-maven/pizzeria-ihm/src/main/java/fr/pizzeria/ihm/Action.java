@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Action {
 
@@ -22,7 +23,7 @@ public class Action {
 		this.libelle = libelle;
 	}
 
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 
 	}
 

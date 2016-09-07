@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
@@ -21,7 +22,7 @@ public class CrediterClient extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.helper.getStockageClient().finAll();
 
 		System.out.println("Veuillez choisir le client à crediter");

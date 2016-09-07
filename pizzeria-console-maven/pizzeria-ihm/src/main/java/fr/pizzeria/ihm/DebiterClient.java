@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import fr.pizzeria.ihm.helper.IhmHelper;
@@ -8,7 +9,7 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.model.DebitException;
 import fr.pizzeria.service.Stockage;
 
-@Annotationaction(constructAction="client")
+@Annotationaction(constructAction = "client")
 public class DebiterClient extends Action {
 
 	private Stockage<Integer, Client> stockage;
@@ -21,7 +22,7 @@ public class DebiterClient extends Action {
 	}
 
 	@Override
-	public void execute() throws IOException {
+	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.stockage.finAll();
 
 		System.out.println("Veuillez choisir le client à debiter");
