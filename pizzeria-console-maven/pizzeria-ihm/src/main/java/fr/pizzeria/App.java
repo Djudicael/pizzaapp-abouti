@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 
@@ -23,6 +24,7 @@ public class App {
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Objectif 1 - Afficher le menu
 		// Objectif 2 Récupérer la saisie
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
 		Scanner sc = new Scanner(System.in);
 		// lire le fichier de prorpierté se trouvant de ressource
