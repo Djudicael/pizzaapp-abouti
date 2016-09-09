@@ -26,7 +26,7 @@ public abstract class SuprimerAction<K, T> extends Action {
 		ListerAction<K, T> liste = new ListerAction<K, T>(stockage, "");
 		liste.execute();
 
-		System.out.println("Veuillez choisir l'élément à supprimer");
+		System.out.println("Veuillez choisir l'Ã©lÃ©ment Ã  supprimer");
 		K code = getSaisieCle();
 		stockage.delete(code);
 	}

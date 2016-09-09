@@ -58,7 +58,7 @@ public class AbstractPersonne implements CompteStat {
 
 		if (soldeTemporaire > 5000) {
 			// declencher exception
-			CreditException e = new CreditException("le montante est trop elevé");
+			CreditException e = new CreditException("le montant est trop elevÃ©");
 			throw e;
 		}
 
@@ -72,7 +72,7 @@ public class AbstractPersonne implements CompteStat {
 		if (soldeTemporaire < 0) {
 
 			// declencher exception
-			DebitException e = new DebitException("le montant du solde est négatif ");
+			DebitException e = new DebitException("le montant du solde est nÃ©gatif ");
 			throw e;
 
 		}

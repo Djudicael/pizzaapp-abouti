@@ -25,7 +25,7 @@ public class CrediterClient extends Action {
 	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.helper.getStockageClient().finAll();
 
-		System.out.println("Veuillez choisir le client à crediter");
+		System.out.println("Veuillez choisir le client Ã  crediter");
 		int idClient = helper.getSc().nextInt();
 
 		System.out.println("Veuillez rentrer le montant a crediter");

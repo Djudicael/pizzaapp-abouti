@@ -13,6 +13,11 @@
  <properties>
  <!-- comment declarer une variable facilement uilisable -->
  <vreflex>0.9.10</vreflex>
+ 
+
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+ 
  </properties>
   
   <dependencyManagement>

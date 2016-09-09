@@ -37,9 +37,9 @@ public class Menu {
 		this.actions.put(11, new ListerAction<>(helper.getStockageLivreur(), " liste des livreurs"));
 		this.actions.put(12, new AfficherStatCompte(helper, "Afficher statistique compte"));
 		this.actions.put(13, new EffectuerVirement(helper, "virement enrte client"));
-		this.actions.put(14, new GrouperPizzaCategorie(helper, "Lister les pizzas groupées par catégorie"));
-		this.actions.put(15, new AfficherPizzaTarifEleve(helper, "Afficher la pizza au tarif le plus élevé"));
-		this.actions.put(15, new ImporterDonnee(helper, "(Base de données) Importer les donnees"));
+		this.actions.put(14, new GrouperPizzaCategorie(helper, "Lister les pizzas groupÃ©es par catÃ©gorie"));
+		this.actions.put(15, new AfficherPizzaTarifEleve(helper, "Afficher la pizza au tarif le plus Ã©levÃ©"));
+		this.actions.put(15, new ImporterDonnee(helper, "(Base de donnï¿½es) Importer les donnees"));
 
 		Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(Annotationaction.class);
 		AtomicInteger youWillTry = new AtomicInteger(0);

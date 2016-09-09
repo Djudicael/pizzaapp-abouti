@@ -23,7 +23,7 @@ public class AfficherPizzaTarifEleve extends Action {
 		Optional<Pizza> PizzaCher = helper.getStockagePizza().finAll().values().stream()
 				.collect(Collectors.maxBy(Comparator.comparing(Pizza::getPrix)));
 
-		System.out.println("La pizza au tarif la plus elevé est :" + PizzaCher.get());
+		System.out.println("La pizza au tarif le plus elevÃ© est :" + PizzaCher.get());
 	}
 
 }

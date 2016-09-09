@@ -58,14 +58,14 @@ public class AjouterPizzaAction extends Action {
 				helper.getStockagePizza().save(newcode, newPizza);
 			} catch (PizzeriaException e) {
 				// TODO Auto-generated catch block
-				// System.out.println("attention vous avez rentré un code de
+				// System.out.println("attention vous avez rentrï¿½ un code de
 				// plus de
 				// 3 lettres");
 				System.out.println(e.getMessage());
 				// e.printStackTrace();
 			}
 
-			System.out.println("votre nouvelle pizza a été ajouté");
+			System.out.println("votre nouvelle pizza a Ã©tÃ© ajoutÃ©");
 
 		}
 

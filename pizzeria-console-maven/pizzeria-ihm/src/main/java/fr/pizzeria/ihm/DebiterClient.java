@@ -25,10 +25,10 @@ public class DebiterClient extends Action {
 	public void execute() throws IOException, SQLException {
 		Map<Integer, Client> clients = this.stockage.finAll();
 
-		System.out.println("Veuillez choisir le client � debiter");
+		System.out.println("Veuillez choisir le client à debiter");
 		int idClient = helper.getSc().nextInt();
 
-		System.out.println("Veuillez rentrer le montant a debiter");
+		System.out.println("Veuillez rentrer le montant à debiter");
 		double montant = helper.getSc().nextDouble();
 		Client clientTrouve = clients.get(idClient);
 

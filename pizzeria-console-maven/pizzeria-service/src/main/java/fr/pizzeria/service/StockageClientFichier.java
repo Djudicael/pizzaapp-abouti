@@ -52,7 +52,7 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 	@Override
 	public void save(Integer newcode, Client newPizza) throws PizzeriaException, IOException {
 		Path cheminFichier = Paths.get("data", "client", newcode + ".txt");
-		// Création d'un nouveau fichier
+		// CrÃ©ation d'un nouveau fichier
 		Files.createFile(cheminFichier);
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
 		Files.write(cheminFichier, Arrays.asList(
@@ -67,7 +67,7 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 
 	@Override
 	public void update(Integer newcode, Client pizza, Integer anciencode) throws IOException {
-		// parcourir le répertoire data/pizza
+		// parcourir le rÃ©pertoire data/pizza
 		Path cheminFichier = Paths.get("data", "newcode", anciencode + ".txt");
 		System.out.println(cheminFichier);
 
@@ -88,7 +88,7 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 		 */
 		// Mise a jour du fichier
 
-		// Création d'un nouveau fichier
+		// CrÃ©ation d'un nouveau fichier
 		Files.createFile(cheminFichier);
 		// Ecriture dans le fichier data/pizza/test.txt de 2 lignes
 		Files.write(cheminFichier, Arrays.asList(pizza.getId() + " " + pizza.getNom() + " " + pizza.getSolde()));
@@ -102,7 +102,7 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 
 	@Override
 	public void delete(Integer code) throws IOException {
-		// parcourir le répertoire data/pizza
+		// parcourir le rÃ©pertoire data/pizza
 		Path cheminFichier = Paths.get("data", "client", code + ".txt");
 		System.out.println(cheminFichier);
 

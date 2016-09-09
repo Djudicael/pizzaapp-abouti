@@ -12,7 +12,7 @@ public class StockageTableau implements Stockage<String, Pizza> {
 
 	public StockageTableau() {
 
-		Pizza pepe = new Pizza("PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE);
+		Pizza pepe = new Pizza("PEP", "PÃ©pÃ©roni", 12.50, CategoriePizza.VIANDE);
 
 		listePizza.put(pepe.getCode(), pepe);
 		Pizza marg = new Pizza("MAR", "Margherita", 14.00, CategoriePizza.SANS_VIANDE);
@@ -71,13 +71,13 @@ public class StockageTableau implements Stockage<String, Pizza> {
 	public void delete(String code) {
 		/*
 		 * int newIndex; // on parcourt la liste Pizza listeProvisoire[] = new
-		 * Pizza[listePizza.size() - 1]; // tableau // provisoire // décrémenté
+		 * Pizza[listePizza.size() - 1]; // tableau // provisoire // dÃ©crÃ©mentÃ©
 		 * // de 1
 		 * 
 		 * for (int i = 0; i < listePizza.length - 1; i++) { if (i >= id) {
-		 * newIndex = i + 1; } // on modifie l'index pour passer la pizza à
+		 * newIndex = i + 1; } // on modifie l'index pour passer la pizza
 		 * modifier else { newIndex = i; } // on copie les informations de
-		 * l'ancienne liste sauf la pizza // supprimée listeProvisoire[i] =
+		 * l'ancienne liste sauf la pizza // supprimÃ©e listeProvisoire[i] =
 		 * listePizza[newIndex];
 		 * 
 		 * } listePizza = listeProvisoire;

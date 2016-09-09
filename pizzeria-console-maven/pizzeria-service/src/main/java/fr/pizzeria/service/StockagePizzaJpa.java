@@ -82,6 +82,7 @@ public class StockagePizzaJpa implements Stockage<String, Pizza> {
 			piz.setParameter("toto", anciencode);
 			Pizza pizza2 = piz.getResultList().get(0);
 			pizza.setId(pizza2.getId());
+			em.merge(pizza);
 
 		});
 

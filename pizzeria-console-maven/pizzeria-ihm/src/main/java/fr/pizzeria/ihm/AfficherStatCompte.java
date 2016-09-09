@@ -52,7 +52,7 @@ public class AfficherStatCompte extends Action {
 		 * o1.getSolde().compareTo(o2.getSolde()); } });
 		 */
 
-		System.out.println("Solde le plus elevé " + max.get().getSolde());
+		System.out.println("Solde le plus elevÃ© " + max.get().getSolde());
 		System.out.println("Solde le plus faible " + min.get().getSolde());
 
 	}

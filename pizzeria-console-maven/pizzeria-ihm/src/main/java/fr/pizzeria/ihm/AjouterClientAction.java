@@ -32,7 +32,7 @@ public class AjouterClientAction extends Action {
 
 		if (clients.containsKey(newModif.getId())) {
 
-			System.out.println("Un client possède deja cet Id");
+			System.out.println("Un client possÃ¨de deja cet Id");
 
 		} else {
 			// sauvegrde de la pizza
@@ -40,14 +40,14 @@ public class AjouterClientAction extends Action {
 				stockage.save(newModif.getId(), newModif);
 			} catch (PizzeriaException e) {
 				// TODO Auto-generated catch block
-				// System.out.println("attention vous avez rentré un code de
+				// System.out.println("attention vous avez rentrï¿½ un code de
 				// plus de
 				// 3 lettres");
 				System.out.println(e.getMessage());
 				// e.printStackTrace();
 			}
 
-			System.out.println("Client ajouté");
+			System.out.println("Client ajoutÃ©");
 
 		}
 

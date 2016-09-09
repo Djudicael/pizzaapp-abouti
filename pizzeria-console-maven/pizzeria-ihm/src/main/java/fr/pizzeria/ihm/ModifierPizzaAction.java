@@ -22,11 +22,11 @@ public class ModifierPizzaAction extends Action {
 
 	@Override
 	public void execute() throws IOException, SQLException {
-		System.out.println("Menu 3. Mettre à jour une pizza");
+		System.out.println("Menu 3. Mettre Ã  jour une pizza");
 		System.out.println("voici la liste de pizza");
 		ListerAction<String, Pizza> liste = new ListerAction<>(helper.getStockagePizza(), "");
 		liste.execute();
-		System.out.println("Veuillez choisir la pizza à modifier");
+		System.out.println("Veuillez choisir la pizza Ã  modifier");
 		String ancienCode = helper.getSc().next();
 
 		// modification

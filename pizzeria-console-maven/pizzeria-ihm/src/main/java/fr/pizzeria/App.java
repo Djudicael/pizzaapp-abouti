@@ -23,11 +23,11 @@ public class App {
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Objectif 1 - Afficher le menu
-		// Objectif 2 Récupérer la saisie
+		// Objectif 2 RÃ©cupÃ©rer la saisie
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
 		Scanner sc = new Scanner(System.in);
-		// lire le fichier de prorpierté se trouvant de ressource
+		// lire le fichier de prorpiertÃ© se trouvant de ressource
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
 		String classeStockagePizza = bundle.getString("stockage.pizza");
 		System.out.println(classeStockagePizza);
