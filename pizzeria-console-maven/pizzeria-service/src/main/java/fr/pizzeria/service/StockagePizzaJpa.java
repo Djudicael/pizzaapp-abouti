@@ -3,11 +3,11 @@ package fr.pizzeria.service;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
@@ -38,67 +38,93 @@ public class StockagePizzaJpa implements Stockage<String, Pizza> {
 
 	@Override
 	public void save(String newcode, Pizza newPizza) throws PizzeriaException, IOException, SQLException {
-		EntityManager em = emf.createEntityManager();
+		/*
+		 * EntityManager em = emf.createEntityManager();
+		 * 
+		 * EntityTransaction et = em.getTransaction(); et.begin(); try {
+		 * em.persist(newPizza);
+		 * 
+		 * et.commit();
+		 * 
+		 * } catch (PersistenceException e) { et.rollback(); }
+		 * 
+		 * em.close();
+		 */
 
-		EntityTransaction et = em.getTransaction();
-		et.begin();
-		try {
+		mutualiser(em -> {
 			em.persist(newPizza);
 
-			et.commit();
-
-		} catch (PersistenceException e) {
-			et.rollback();
-		}
-
-		em.close();
+		});
 
 	}
 
 	@Override
 	public void update(String newcode, Pizza pizza, String anciencode) throws IOException, SQLException {
-		EntityManager em = emf.createEntityManager();
+		/*
+		 * EntityManager em = emf.createEntityManager();
+		 * 
+		 * TypedQuery<Pizza> piz = em.createNamedQuery("pizza.findId",
+		 * Pizza.class); piz.setParameter("toto", anciencode); Pizza pizza2 =
+		 * piz.getResultList().get(0);
+		 * 
+		 * EntityTransaction et = em.getTransaction(); et.begin(); try { if
+		 * (pizza2 != null) { pizza.setId(pizza2.getId()); em.merge(pizza); }
+		 * 
+		 * et.commit();
+		 * 
+		 * } catch (PersistenceException e) { et.rollback(); }
+		 * 
+		 * em.close();
+		 */
 
-		TypedQuery<Pizza> piz = em.createNamedQuery("pizza.findId", Pizza.class);
-		piz.setParameter("toto", anciencode);
-		Pizza pizza2 = piz.getResultList().get(0);
+		mutualiser(em -> {
+			TypedQuery<Pizza> piz = em.createNamedQuery("pizza.findId", Pizza.class);
+			piz.setParameter("toto", anciencode);
+			Pizza pizza2 = piz.getResultList().get(0);
+			pizza.setId(pizza2.getId());
 
-		EntityTransaction et = em.getTransaction();
-		et.begin();
-		try {
-			if (pizza2 != null) {
-				pizza.setId(pizza2.getId());
-				em.merge(pizza);
-			}
-
-			et.commit();
-
-		} catch (PersistenceException e) {
-			et.rollback();
-		}
-
-		em.close();
+		});
 
 	}
 
 	@Override
 	public void delete(String code) throws IOException, SQLException {
-		EntityManager em = emf.createEntityManager();
+		/*
+		 * EntityManager em = emf.createEntityManager();
+		 * 
+		 * EntityTransaction et = em.getTransaction(); et.begin(); try { Query
+		 * piz = em.createNamedQuery("pizza.delete"); piz.setParameter("toto",
+		 * code); piz.executeUpdate(); et.commit();
+		 * 
+		 * } catch (PersistenceException e) { et.rollback(); }
+		 * 
+		 * em.close();
+		 */
 
-		EntityTransaction et = em.getTransaction();
-		et.begin();
-		try {
+		mutualiser(em -> {
 			Query piz = em.createNamedQuery("pizza.delete");
 			piz.setParameter("toto", code);
 			piz.executeUpdate();
-			et.commit();
 
+		});
+
+	}
+
+	public EntityManager createEm() {
+		return emf.createEntityManager();
+	}
+
+	public void mutualiser(Consumer<EntityManager> code) {
+		EntityManager em = createEm();
+		em.getTransaction().begin();
+		try {
+			code.accept(em);
+			em.getTransaction().commit();
 		} catch (PersistenceException e) {
-			et.rollback();
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
-
-		em.close();
-
 	}
 
 }
