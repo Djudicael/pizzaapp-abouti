@@ -24,6 +24,7 @@ public class App {
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Objectif 1 - Afficher le menu
 		// Objectif 2 Récupérer la saisie
+
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
 		Scanner sc = new Scanner(System.in);

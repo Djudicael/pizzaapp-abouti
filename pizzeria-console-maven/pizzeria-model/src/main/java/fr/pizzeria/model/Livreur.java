@@ -1,13 +1,29 @@
 package fr.pizzeria.model;
 
-public class Livreur extends AbstractPersonne {
+import java.util.Set;
 
-	private double solde;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Livreur extends AbstractPersonne {
+	@OneToMany(mappedBy = "livreur")
+	private Set<Commande> commande;
 
 	private double montantDecouvertAutorise;
 
-	public Livreur(int id, String nom, String prenom, double solde) {
-		super(id, nom, prenom, solde);
+	public Livreur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Livreur(String nom, String prenom, double solde) {
+		super(nom, prenom, solde);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Livreur(String nom, String prenom, String email, String motDePasse) {
+		super(nom, prenom, email, motDePasse);
 		// TODO Auto-generated constructor stub
 	}
 

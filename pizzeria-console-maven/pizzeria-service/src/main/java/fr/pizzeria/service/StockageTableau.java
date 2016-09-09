@@ -1,9 +1,12 @@
 package fr.pizzeria.service;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
 import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 
 public class StockageTableau implements Stockage<String, Pizza> {
@@ -91,6 +94,12 @@ public class StockageTableau implements Stockage<String, Pizza> {
 		 * } }
 		 */
 		listePizza.remove(code);
+
+	}
+
+	@Override
+	public void save(Client newPizza) throws PizzeriaException, IOException, SQLException {
+		// TODO Auto-generated method stub
 
 	}
 

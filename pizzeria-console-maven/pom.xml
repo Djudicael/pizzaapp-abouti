@@ -23,6 +23,14 @@
   <dependencyManagement>
   <dependencies>
   
+  <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.10</version>
+</dependency>
+  
+  
   <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 <dependency>
     <groupId>org.hibernate.javax.persistence</groupId>

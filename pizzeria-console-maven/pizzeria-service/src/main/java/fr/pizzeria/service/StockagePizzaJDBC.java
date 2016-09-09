@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaJDBC implements Stockage<String, Pizza> {
@@ -96,6 +97,12 @@ public class StockagePizzaJDBC implements Stockage<String, Pizza> {
 		deletePizza.executeUpdate();
 		deletePizza.close();
 		connection.close();
+
+	}
+
+	@Override
+	public void save(Client newPizza) throws PizzeriaException, IOException, SQLException {
+		// TODO Auto-generated method stub
 
 	}
 

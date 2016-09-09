@@ -13,6 +13,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaJpa implements Stockage<String, Pizza> {
@@ -126,6 +127,12 @@ public class StockagePizzaJpa implements Stockage<String, Pizza> {
 		} finally {
 			em.close();
 		}
+	}
+
+	@Override
+	public void save(Client newPizza) throws PizzeriaException, IOException, SQLException {
+		// TODO Auto-generated method stub
+
 	}
 
 }

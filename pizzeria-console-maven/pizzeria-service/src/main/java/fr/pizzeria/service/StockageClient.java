@@ -1,5 +1,7 @@
 package fr.pizzeria.service;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -11,12 +13,13 @@ public class StockageClient implements Stockage<Integer, Client> {
 
 	public StockageClient() {
 		super();
-		Client jojo = new Client(1, "Morpal", "Joel", 1000);
-		listeClient.put(jojo.getId(), jojo);
-		Client mar = new Client(2, "Tariel", "Marie", 2005);
-		listeClient.put(mar.getId(), mar);
-		Client opal = new Client(3, "Opal", "Lucie", 500);
-		listeClient.put(opal.getId(), opal);
+		/*
+		 * Client jojo = new Client(1, "Morpal", "Joel", 1000);
+		 * listeClient.put(jojo.getId(), jojo); Client mar = new Client(2,
+		 * "Tariel", "Marie", 2005); listeClient.put(mar.getId(), mar); Client
+		 * opal = new Client(3, "Opal", "Lucie", 500);
+		 * listeClient.put(opal.getId(), opal);
+		 */
 	}
 
 	@Override
@@ -51,6 +54,12 @@ public class StockageClient implements Stockage<Integer, Client> {
 	@Override
 	public void delete(Integer code) {
 		listeClient.remove(code);
+
+	}
+
+	@Override
+	public void save(Client newPizza) throws PizzeriaException, IOException, SQLException {
+		// TODO Auto-generated method stub
 
 	}
 

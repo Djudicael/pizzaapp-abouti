@@ -1,7 +1,10 @@
 package fr.pizzeria.ihm.helper;
 
+import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
@@ -58,7 +61,7 @@ public class IhmHelper {
 		System.out.println("veuillez saisir le solde");
 		double newSolde = sc.nextDouble();
 
-		Client newModif = new Client(newID, newnom, newPrenom, newSolde);
+		Client newModif = new Client(newnom, newPrenom, newSolde);
 		return newModif;
 	}
 
@@ -76,6 +79,10 @@ public class IhmHelper {
 
 	public void setStockageLivreur(Stockage<Integer, Livreur> stockageLivreur) {
 		this.stockageLivreur = stockageLivreur;
+	}
+
+	public String encodage(String mdp) throws GeneralSecurityException {
+		return DigestUtils.sha512Hex(mdp);
 	}
 
 }

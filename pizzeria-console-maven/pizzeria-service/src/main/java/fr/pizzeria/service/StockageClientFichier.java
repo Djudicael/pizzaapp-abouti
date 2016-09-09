@@ -5,6 +5,7 @@ import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -118,6 +119,12 @@ public class StockageClientFichier implements Stockage<Integer, Client> {
 			ade.printStackTrace();
 			userMessage = ade.getMessage() + " File is not writable.";
 		}
+
+	}
+
+	@Override
+	public void save(Client newPizza) throws PizzeriaException, IOException, SQLException {
+		// TODO Auto-generated method stub
 
 	}
 

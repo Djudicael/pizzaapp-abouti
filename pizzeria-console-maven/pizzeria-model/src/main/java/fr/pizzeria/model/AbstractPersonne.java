@@ -1,15 +1,33 @@
 package fr.pizzeria.model;
 
-public class AbstractPersonne implements CompteStat {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-	private int id;
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class AbstractPersonne implements CompteStat {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Integer id;
 	private String nom;
 	private String prenom;
-	private double solde;
+	private String email;
+	private String motDePasse;
+	protected double solde;
 
-	public AbstractPersonne(int id, String nom, String prenom, double solde) {
+	public AbstractPersonne(String nom, String prenom, String email, String motDePasse) {
+		this.email = email;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.motDePasse = motDePasse;
 
-		this.id = id;
+	}
+
+	public AbstractPersonne(String nom, String prenom, double solde) {
 
 		this.nom = nom;
 		this.prenom = prenom;
