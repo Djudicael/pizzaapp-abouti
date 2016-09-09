@@ -9,7 +9,7 @@ public class ClientTest {
 
 	@Before
 	public void setUp() {
-		client = new Client();
+		client = new Client( "jojo", "nana", 2000.0);
 
 	}
 
