@@ -32,6 +32,10 @@ public class IhmHelper {
 		this.sc = sc;
 	}
 
+	public IhmHelper() {
+
+	}
+
 	public Importation getStockagePizDaa() {
 		return stockagePizDaa;
 	}

@@ -52,6 +52,7 @@ public class AjouterPizzaAction extends Action {
 				.filter(cat -> cat.ordinal() == cateOrdinal).findFirst();
 
 		if (optCatPizza.isPresent()) {
+
 			CategoriePizza catPizzaOrd = optCatPizza.get();
 			Pizza newPizza = new Pizza(newcode, newnom, newprix, catPizzaOrd);
 			try {
