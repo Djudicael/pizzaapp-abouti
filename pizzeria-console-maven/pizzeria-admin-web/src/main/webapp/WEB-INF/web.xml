@@ -17,24 +17,53 @@
   <servlet-name>PizzaServletWeb</servlet-name>
   <servlet-class>web.PizzaServletWeb</servlet-class>
   </servlet>
+  <servlet>
+  <servlet-name>PizzaServletAjoutWeb</servlet-name>
+  <servlet-class>web.PizzaServletAjoutWeb</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>PizzaServletSuprimer</servlet-name>
+  <servlet-class>web.PizzaServletSuprimer</servlet-class>
+  </servlet>
+  
+  <servlet>
+  <servlet-name>PizzaServletUpdate</servlet-name>
+  <servlet-class>web.PizzaServletUpdate</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   <servlet-name>MaServlet</servlet-name>
-  <url-pattern> /maservlet</url-pattern>
+  <url-pattern>/maservlet</url-pattern>
   
   </servlet-mapping>
   
+  <servlet-mapping>
+  <servlet-name>PizzaServletUpdate</servlet-name>
+  <url-pattern>/update</url-pattern>
   
+  </servlet-mapping>
   
   <servlet-mapping>
   <servlet-name>PizzaServletWebApi</servlet-name>
-  <url-pattern> /listes</url-pattern>
+  <url-pattern>/listes</url-pattern>
   
   </servlet-mapping>
   
    <servlet-mapping>
   <servlet-name>PizzaServletWeb</servlet-name>
-  <url-pattern> /pizzawebapp</url-pattern>
+  <url-pattern>/pizzawebapp</url-pattern>
+  
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>PizzaServletAjoutWeb</servlet-name>
+  <url-pattern>/ajoutpizza</url-pattern>
+  
+  </servlet-mapping>
+  
+    <servlet-mapping>
+  <servlet-name>PizzaServletSuprimer</servlet-name>
+  <url-pattern>/delete</url-pattern>
   
   </servlet-mapping>
 </web-app>

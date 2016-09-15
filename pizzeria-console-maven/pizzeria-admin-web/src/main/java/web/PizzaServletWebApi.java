@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,28 +23,25 @@ public class PizzaServletWebApi extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		Stockage<String, Pizza> stockageProperties = new StockagePizzaJpa();
+		Map<String, Pizza> pizzas;
 		try {
-
-			Stockage<String, Pizza> stockageProperties = new StockagePizzaJpa();
-			Map<String, Pizza> pizzas = stockageProperties.finAll();
-			pizzas.values().forEach(e -> {
-				try {
-					resp.getWriter().write(e.toString() + "\n");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			});
-		} catch (SQLException e2) {
+			pizzas = stockageProperties.finAll();
+			RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()
+					.getRequestDispatcher("/WEB-INF/listepizza.jsp");
+			req.setAttribute("liste", pizzas);
+			dispatcher.forward(req, resp);
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			e.printStackTrace();
 		}
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		/* Récupération des champs du formulaire. */
 
 		String categorie = req.getParameter("categorie");
 		CategoriePizza categorieFin = CategoriePizza.valueOf(categorie);
