@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<version>${vreflex}</version>
+			
 		</dependency>
 
 		<dependency>
