@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,20 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
-import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockagePizzaJpa;
 
 public class PizzaServletWebApi extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Stockage<String, Pizza> stockageProperties = new StockagePizzaJpa();
 		Map<String, Pizza> pizzas;
 		try {
-			pizzas = stockageProperties.finAll();
+			pizzas = PersistanceUtils.getInstance().getStockagePizza().finAll();
+			Collection<Pizza> pizzaListe = pizzas.values();
 			RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()
 					.getRequestDispatcher("/WEB-INF/listepizza.jsp");
-			req.setAttribute("liste", pizzas);
+			req.setAttribute("liste", pizzaListe);
 			dispatcher.forward(req, resp);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

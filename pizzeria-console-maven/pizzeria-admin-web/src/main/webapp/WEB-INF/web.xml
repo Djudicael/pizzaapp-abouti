@@ -3,67 +3,117 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  
-  <servlet>
-  <servlet-name>MaServlet</servlet-name>
-  <servlet-class>dta.MaServlet</servlet-class>
-  </servlet>
-  <servlet>
-  <servlet-name>PizzaServletWebApi</servlet-name>
-  <servlet-class>web.PizzaServletWebApi</servlet-class>
-  </servlet>
-    <servlet>
-  <servlet-name>PizzaServletWeb</servlet-name>
-  <servlet-class>web.PizzaServletWeb</servlet-class>
-  </servlet>
-  <servlet>
-  <servlet-name>PizzaServletAjoutWeb</servlet-name>
-  <servlet-class>web.PizzaServletAjoutWeb</servlet-class>
-  </servlet>
-  <servlet>
-  <servlet-name>PizzaServletSuprimer</servlet-name>
-  <servlet-class>web.PizzaServletSuprimer</servlet-class>
-  </servlet>
-  
-  <servlet>
-  <servlet-name>PizzaServletUpdate</servlet-name>
-  <servlet-class>web.PizzaServletUpdate</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>MaServlet</servlet-name>
-  <url-pattern>/maservlet</url-pattern>
-  
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  <servlet-name>PizzaServletUpdate</servlet-name>
-  <url-pattern>/update</url-pattern>
-  
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  <servlet-name>PizzaServletWebApi</servlet-name>
-  <url-pattern>/listes</url-pattern>
-  
-  </servlet-mapping>
-  
-   <servlet-mapping>
-  <servlet-name>PizzaServletWeb</servlet-name>
-  <url-pattern>/pizzawebapp</url-pattern>
-  
-  </servlet-mapping>
-  
-   <servlet-mapping>
-  <servlet-name>PizzaServletAjoutWeb</servlet-name>
-  <url-pattern>/ajoutpizza</url-pattern>
-  
-  </servlet-mapping>
-  
-    <servlet-mapping>
-  <servlet-name>PizzaServletSuprimer</servlet-name>
-  <url-pattern>/delete</url-pattern>
-  
-  </servlet-mapping>
+
+	<display-name>Archetype Created Web Application</display-name>
+
+
+	<filter>
+		<filter-name>RestrictionFilter</filter-name>
+		<filter-class>web.RestrictionFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>RestrictionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>web.CompteurSessionListener</listener-class>
+	</listener>
+
+
+	<servlet>
+		<servlet-name>MaServlet</servlet-name>
+		<servlet-class>dta.MaServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PizzaServletWebApi</servlet-name>
+		<servlet-class>web.PizzaServletWebApi</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PizzaServletWeb</servlet-name>
+		<servlet-class>web.PizzaServletWeb</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PizzaServletAjoutWeb</servlet-name>
+		<servlet-class>web.PizzaServletAjoutWeb</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PizzaServletSuprimer</servlet-name>
+		<servlet-class>web.PizzaServletSuprimer</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PizzaServletUpdate</servlet-name>
+		<servlet-class>web.PizzaServletUpdate</servlet-class>
+	</servlet>
+
+
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>web.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Technique</servlet-name>
+		<servlet-class>web.Technique</servlet-class>
+	</servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>MaServlet</servlet-name>
+		<url-pattern>/maservlet</url-pattern>
+
+	</servlet-mapping>
+
+
+
+	<servlet-mapping>
+		<servlet-name>Technique</servlet-name>
+		<url-pattern>/techn</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet-mapping>
+		<servlet-name>PizzaServletUpdate</servlet-name>
+		<url-pattern>/update</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PizzaServletWebApi</servlet-name>
+		<url-pattern>/listes</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PizzaServletWeb</servlet-name>
+		<url-pattern>/pizzawebapp</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PizzaServletAjoutWeb</servlet-name>
+		<url-pattern>/ajoutpizza</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PizzaServletSuprimer</servlet-name>
+		<url-pattern>/delete</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/authe</url-pattern>
+
+	</servlet-mapping>
 </web-app>
