@@ -9,16 +9,18 @@
                 <tr>
                   
                   <th>Nombre de session</th>
-                  <th>Temps d�'executions des requetes</th>
+                  <th>Temps d'eexecutions des requetes</th>
                   
                 </tr>
               </thead>
               <tbody>
+              <c:forEach var="mapcourante" items="${mapping}">
                 <tr>
-                  <td>${compteur_affichage}</td>
-                  <td>${timer}</td>
+                  <td>${mapcourante.key}</td>
+                  <td>${mapcourante.value}</td>
                   
                 </tr>
+                </c:forEach>
                
               </tbody>
             </table>

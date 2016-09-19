@@ -29,6 +29,9 @@ public class TemrpReq implements Filter {
 		long after = System.currentTimeMillis();
 		String path = ((HttpServletRequest) request).getRequestURI();
 		config.getServletContext().log(path + " : " + (after - before));
+		request.setAttribute("time", (after - before));
+		request.getRequestDispatcher("/techn").forward(request, response);
+		chain.doFilter(request, response);
 	}
 
 	@Override

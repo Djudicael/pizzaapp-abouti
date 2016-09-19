@@ -1,6 +1,8 @@
 package web;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +19,10 @@ public class Technique extends HttpServlet {
 		RequestDispatcher dispatcher1 = (RequestDispatcher) this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/technique.jsp");
 		req.setAttribute("compteur_affichage", comp);
-		req.setAttribute("timer", req.getSession().getServletContext().getAttribute("time"));
+		req.setAttribute("timer", req.getAttribute("time"));
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		map.put(comp, (String) req.getAttribute("time"));
+		req.setAttribute("mapping", map);
 		dispatcher1.forward(req, resp);
 	}
 
