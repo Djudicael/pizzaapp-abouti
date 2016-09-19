@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,17 +21,29 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
+import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockagePizzaJpa;
 
 @WebServlet("/listes")
 public class PizzaServletWebApi extends HttpServlet {
+	
+	@Inject 
+	private Stockage<String, Pizza> stockagePizza;
+	@Inject private Event<CreatePizza> pizzaCreerEvent;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, Pizza> pizzas;
 		try {
-			pizzas = PersistanceUtils.getInstance().getStockagePizza().finAll();
+			pizzas = stockagePizza.finAll();
 			Collection<Pizza> pizzaListe = pizzas.values();
+			
+			CreatePizza pizzaYolo = new CreatePizza();
+			//pizzaYolo.setPizzaCree(pizzaCree);
+			pizzaYolo.setDate(Calendar.getInstance());
+			pizzaCreerEvent.fire(pizzaYolo);
+			
+			
 			RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()
 					.getRequestDispatcher("/WEB-INF/listepizza.jsp");
 			req.setAttribute("liste", pizzaListe);

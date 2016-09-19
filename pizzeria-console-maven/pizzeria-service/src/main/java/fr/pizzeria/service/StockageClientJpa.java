@@ -14,7 +14,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import fr.pizzeria.model.Client;
-
+@JpaStockage
 public class StockageClientJpa implements Stockage<Integer, Client> {
 	private EntityManagerFactory emf;
 

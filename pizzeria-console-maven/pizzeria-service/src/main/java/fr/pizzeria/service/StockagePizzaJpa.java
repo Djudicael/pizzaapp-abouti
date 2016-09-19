@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,6 +17,8 @@ import javax.persistence.TypedQuery;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
 
+/*@JpaStockage
+@ApplicationScoped*/
 public class StockagePizzaJpa implements Stockage<String, Pizza> {
 
 	private EntityManagerFactory emf;

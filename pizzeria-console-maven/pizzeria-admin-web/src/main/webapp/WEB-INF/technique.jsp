@@ -9,6 +9,7 @@
                 <tr>
                   
                   <th>Nombre de session</th>
+                   <th>chemin de la requette</th>
                   <th>Temps d'eexecutions des requetes</th>
                   
                 </tr>
@@ -16,6 +17,7 @@
               <tbody>
               <c:forEach var="mapcourante" items="${mapping}">
                 <tr>
+               	<td>${compteur_affichage}</td>
                   <td>${mapcourante.key}</td>
                   <td>${mapcourante.value}</td>
                   

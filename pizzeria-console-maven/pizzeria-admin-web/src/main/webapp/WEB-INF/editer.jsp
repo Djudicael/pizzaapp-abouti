@@ -16,7 +16,7 @@
                             <p>Vous pouvez rentrer votre pizza.</p>
 
                             <label for="oldref">Ancienne reference suprimer <span class="requis">*</span></label>
-                            <input type="text" id="oldref" class="form-control input-md" name="oldref" value=" ${pizza.code}" size="20" maxlength="60"
+                            <input type="text" id="oldref" class="form-control input-md" name="oldref" value="${pizza.code}" size="20" maxlength="60"
                             />
                             <br />
 

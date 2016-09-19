@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 
+<%@page isELIgnored="false"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
     
           
                 <html lang="en">
@@ -16,13 +19,14 @@
                     <title>Starter Template for Bootstrap</title>
 
                     <!-- Bootstrap core CSS -->
-                    <link href="./boot/dist/css/bootstrap.min.css" rel="stylesheet">
+                    <link href="<c:url value='./boot/dist/css/bootstrap.min.css'/>" rel="stylesheet">
 
                     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
                     <link href="./boot/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
                     <!-- Custom styles for this template -->
                     <link href="./boot/style.css" rel="stylesheet">
+                     <link href="./boot/style.css" rel="stylesheet">
 
                     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
                     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

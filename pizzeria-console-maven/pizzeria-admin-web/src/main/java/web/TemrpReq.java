@@ -1,6 +1,10 @@
 package web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,6 +15,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.w3c.dom.stylesheets.LinkStyle;
 
 @WebFilter(urlPatterns = { "/*" }, description = "Request timer filter")
 public class TemrpReq implements Filter {
@@ -32,12 +38,27 @@ public class TemrpReq implements Filter {
 		long after = System.currentTimeMillis();
 		String path = ((HttpServletRequest) request).getRequestURI();
 		config.getServletContext().log(path + " : " + (after - before));
-
-		request.getServletContext().setAttribute("time", (after - before));
-		((HttpServletResponse) response).sendRedirect("/techn");
+		
+		Map<String, List<Long>> mapPerf = (Map<String, List<Long>>) request.getServletContext().getAttribute("time");
+		
+		if(mapPerf == null) {
+			mapPerf =  new HashMap<>();
+		}
+		
+		List<Long> listTempsExec = mapPerf.get(path);
+		
+		if(listTempsExec == null) {
+			listTempsExec = new ArrayList<>();
+			mapPerf.put(path, listTempsExec);
+		}
+		
+		listTempsExec.add((after - before));
+		
+		request.getServletContext().setAttribute("time",mapPerf);
+		//((HttpServletResponse) response).sendRedirect("/techn");
 
 		// request.getRequestDispatcher("/techn").forward(request, response);
-		chain.doFilter(request, response);
+		
 	}
 
 	@Override

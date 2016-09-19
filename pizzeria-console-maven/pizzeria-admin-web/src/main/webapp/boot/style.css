@@ -48,6 +48,10 @@ form .requis {
     background-color:#c00;
 }
 
+.btn-primary :hover{
+    background-color:blueviolet;
+}
+
 
 .form-signin {
   max-width: 330px;
@@ -83,3 +87,4 @@ form .requis {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
