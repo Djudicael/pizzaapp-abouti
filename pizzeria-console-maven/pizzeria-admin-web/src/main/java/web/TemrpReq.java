@@ -8,8 +8,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+@WebFilter(urlPatterns = { "/*" }, description = "Request timer filter")
 public class TemrpReq implements Filter {
 	private FilterConfig config = null;
 
@@ -29,8 +32,11 @@ public class TemrpReq implements Filter {
 		long after = System.currentTimeMillis();
 		String path = ((HttpServletRequest) request).getRequestURI();
 		config.getServletContext().log(path + " : " + (after - before));
-		request.setAttribute("time", (after - before));
-		request.getRequestDispatcher("/techn").forward(request, response);
+
+		request.getServletContext().setAttribute("time", (after - before));
+		((HttpServletResponse) response).sendRedirect("/techn");
+
+		// request.getRequestDispatcher("/techn").forward(request, response);
 		chain.doFilter(request, response);
 	}
 
