@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -18,18 +19,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.ejb.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
-import fr.pizzeria.service.Stockage;
 import fr.pizzeria.service.StockagePizzaJpa;
 
 @WebServlet("/listes")
 public class PizzaServletWebApi extends HttpServlet {
 	
-	@Inject 
-	private Stockage<String, Pizza> stockagePizza;
-	@Inject private Event<CreatePizza> pizzaCreerEvent;
+	@EJB 
+	private PizzaServiceEJB  stockagePizza;
+	//@Inject private Event<CreatePizza> pizzaCreerEvent;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,10 +39,10 @@ public class PizzaServletWebApi extends HttpServlet {
 			pizzas = stockagePizza.finAll();
 			Collection<Pizza> pizzaListe = pizzas.values();
 			
-			CreatePizza pizzaYolo = new CreatePizza();
+		//	CreatePizza pizzaYolo = new CreatePizza();
 			//pizzaYolo.setPizzaCree(pizzaCree);
-			pizzaYolo.setDate(Calendar.getInstance());
-			pizzaCreerEvent.fire(pizzaYolo);
+			//pizzaYolo.setDate(Calendar.getInstance());
+			//pizzaCreerEvent.fire(pizzaYolo);
 			
 			
 			RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()

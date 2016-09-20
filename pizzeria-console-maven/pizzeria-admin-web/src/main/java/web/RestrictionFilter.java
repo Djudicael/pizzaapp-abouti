@@ -37,7 +37,7 @@ public class RestrictionFilter implements Filter {
 		 * l'utilisateur n'est pas connecté.
 		 */
 		if (session.getAttribute("user") == null && !request.getRequestURI().contains("/authe")
-				&& !request.getRequestURI().contains("/boot")) {
+				&& !request.getRequestURI().contains("/boot") && !request.getRequestURI().contains("api/")) {
 			/* Redirection vers la page publique */
 			response.sendRedirect(request.getContextPath() + "/authe");
 		} else {

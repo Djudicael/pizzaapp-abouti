@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.ejb.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.PizzeriaException;
@@ -17,7 +19,8 @@ import fr.pizzeria.service.StockagePizzaJpa;
 
 @WebServlet("/ajoutpizza")
 public class PizzaServletAjoutWeb extends HttpServlet {
-
+	@EJB 
+	private PizzaServiceEJB  stockagePizza;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()
@@ -40,9 +43,9 @@ public class PizzaServletAjoutWeb extends HttpServlet {
 		double prixFin = Double.valueOf(prix);
 
 		Pizza newPizza = new Pizza(reference, libelle, prixFin, categorieFin);
-		StockagePizzaJpa pizza = new StockagePizzaJpa();
+		//StockagePizzaJpa pizza = new StockagePizzaJpa();
 		try {
-			pizza.save(reference, newPizza);
+			stockagePizza.save(reference, newPizza);
 		} catch (PizzeriaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

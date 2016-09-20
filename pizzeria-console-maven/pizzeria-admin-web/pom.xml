@@ -28,6 +28,12 @@
    
 </dependency>
 
+		<dependency>
+   <groupId>javax</groupId>
+   <artifactId>javaee-api</artifactId>
+   <scope>provided</scope>
+</dependency>
+
 
 
   <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->

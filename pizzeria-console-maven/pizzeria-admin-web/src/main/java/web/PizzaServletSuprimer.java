@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,11 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.ejb.PizzaServiceEJB;
 import fr.pizzeria.service.StockagePizzaJpa;
 
 @WebServlet("/delete")
 public class PizzaServletSuprimer extends HttpServlet {
-
+	@EJB 
+	private PizzaServiceEJB  stockagePizza;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = (RequestDispatcher) this.getServletContext()
@@ -26,9 +29,9 @@ public class PizzaServletSuprimer extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String oldref = req.getParameter("codePizza");
-		StockagePizzaJpa pizza = new StockagePizzaJpa();
+		//StockagePizzaJpa pizza = new StockagePizzaJpa();
 		try {
-			pizza.delete(oldref);
+			stockagePizza.delete(oldref);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
