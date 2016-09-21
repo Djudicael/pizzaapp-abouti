@@ -13,8 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "commande.findId", query = "select c from Commande c where c.numeroCommande=:toto"),
+	@NamedQuery(name = "commande.delete", query = "delete from Commande c where c.numeroCommande=:toto") })
 public class Commande {
 
 	@Id
@@ -27,10 +31,10 @@ public class Commande {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-	public Commande(Integer id, Integer numeroCommande, Calendar date, Client client, Livreur livreur, Set<Pizza> pizza,
+	public Commande( Integer numeroCommande, Calendar date, Client client, Livreur livreur, Set<Pizza> pizza,
 			StatutCommande statut) {
 		super();
-		this.id = id;
+		
 		this.numeroCommande = numeroCommande;
 		this.date = date;
 		this.client = client;

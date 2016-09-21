@@ -49,7 +49,7 @@
                                     </td>
                                     <td>
 
-                                        <a class="btn" onclick="deletePizza()" ><span class="glyphicon glyphicon glyphicon-remove"
+                                        <a class="btn" onclick="deletePizza(${pizzaCourante.code})" ><span class="glyphicon glyphicon glyphicon-remove"
                                                     aria-hidden="true"></span></a>
 
 
@@ -76,7 +76,7 @@
             <script>
       function deletePizza()
     {
-        console.log('deletePizza');
+        
         $.ajax({
             type: 'DELETE',
             url: rootURL + '/api/rest/pizzas/' + ${pizzaCourante.code},

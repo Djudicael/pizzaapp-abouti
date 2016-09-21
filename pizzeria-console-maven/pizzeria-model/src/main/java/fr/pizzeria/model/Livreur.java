@@ -3,9 +3,13 @@ package fr.pizzeria.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "livreur.findId", query = "select p from Livreur p where p.id=:toto"),
+	@NamedQuery(name = "livreur.delete", query = "delete from Livreur p where p.id=:toto") })
 public class Livreur extends AbstractPersonne {
 	@OneToMany(mappedBy = "livreur")
 	private Set<Commande> commande;
