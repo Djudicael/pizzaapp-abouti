@@ -29,12 +29,12 @@ public class CommandeRessource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Commande>list() throws IOException, SQLException{
-		Map<Integer, Commande> commandes;
+		Collection< Commande> commandes;
 		commandes = stockageCommande.finAll();
-		Collection<Commande> commandeListe = commandes.values();
 		
 		
-		return commandeListe;
+		
+		return commandes;
 	}
 	
 	@POST

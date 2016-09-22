@@ -3,6 +3,7 @@ package fr.pizzeria.ejb;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
@@ -28,13 +29,14 @@ import fr.pizzeria.service.PizzeriaException;
 public class CommandeServiceEJB {
 	@PersistenceContext(unitName="pizzeria-ihm") private EntityManager em;
 	
-	public Map<Integer, Commande> finAll() throws IOException, SQLException {
+	public Collection< Commande> finAll() throws IOException, SQLException {
+		Set<Commande> listeCommande = new HashSet<>();
 		TypedQuery<Commande> query = em.createQuery("SELECT c FROM Commande c join fetch c.pizza", Commande.class);
-		Map<Integer, Commande> resulQuerry = new HashSet<>(query.getResultList()).stream()
-				.collect(Collectors.toMap(Commande::getNumeroCommande, c -> c));
+		listeCommande.addAll(query.getResultList());
+	
 
 		
-		return resulQuerry;
+		return listeCommande;
 	}
 	@Schedule(second="0", minute="*", hour="*")
 	public void insererCommande() {
