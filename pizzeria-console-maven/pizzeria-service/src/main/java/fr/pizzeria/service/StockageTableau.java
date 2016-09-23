@@ -5,12 +5,10 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.springframework.stereotype.Component;
-
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Pizza;
-@Component
+
 public class StockageTableau implements Stockage<String, Pizza> {
 
 	public Map<String, Pizza> listePizza = new TreeMap<>();

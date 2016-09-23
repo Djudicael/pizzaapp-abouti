@@ -1,4 +1,4 @@
-package dta.pizzeria_spring;
+package dta.pizzeria_spring.beans;
 
 import java.io.IOException;
 import java.sql.SQLException;
