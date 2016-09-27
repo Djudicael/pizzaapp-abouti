@@ -36,33 +36,26 @@ public class ClientController {
 		AfterOperation ope = new AfterOperation();
 		Client client = clientRepo.findOne(id);
 		double oldCredit = client.getSolde();
-		if(money.getTypedOperation().equals(Operation.CREDIT)){
-			
-			
-			try {
+		
+		try {
+			if(money.getTypedOperation().equals(Operation.CREDIT)){
 				client.crediterCompte(solde);
 				clientRepo.save(client);
 				ope.setSucess(true);
 				ope.setMontant(client.getSolde());
-			} catch (CreditException e) {
-				ope.setSucess(false);
-				ope.setMsg("Credit impossible");
-			}
-			
-			
-		}else{
-			
-			try {
+			}else{
 				client.debiterCompte(solde);
 				clientRepo.save(client);
 				ope.setSucess(true);
 				ope.setMontant(client.getSolde());
-			} catch (DebitException e) {
-				ope.setSucess(false);
-				ope.setMsg("debit impossible");
+				
 			}
 			
+		} catch (DebitException | CreditException e ) {
+			ope.setSucess(false);
+			ope.setMsg("debit impossible");
 		}
+		
 		return ope;
 		
 		
